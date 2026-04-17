@@ -1,16 +1,16 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { FiTarget, FiEye, FiHeart } from "react-icons/fi";
 import styles from "./About.module.css";
 
-const fadeIn = (delay = 0) => ({
+const fadeIn = (delay = 0): Variants => ({
   hidden: { opacity: 0, y: 30 },
   show: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.7, delay, ease: [0.25, 0.46, 0.45, 0.94] },
+    transition: { duration: 0.7, delay, ease: [0.25, 0.46, 0.45, 0.94] as const },
   },
 });
 
