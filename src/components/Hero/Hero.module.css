@@ -1,0 +1,328 @@
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background: var(--color-dark-bg);
+  overflow: hidden;
+}
+
+.bgOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(10, 26, 25, 0.97) 0%,
+    rgba(6, 51, 48, 0.93) 50%,
+    rgba(10, 26, 25, 0.97) 100%
+  );
+  z-index: 1;
+}
+
+.bgPattern {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(201, 168, 76, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(10, 77, 74, 0.3) 0%, transparent 50%);
+  background-size: 100% 100%;
+  z-index: 2;
+}
+
+.bgGradient {
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 59px,
+      rgba(255, 255, 255, 0.015) 60px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 59px,
+      rgba(255, 255, 255, 0.015) 60px
+    );
+  z-index: 2;
+}
+
+.floatOrb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.orbTop {
+  width: 500px;
+  height: 500px;
+  top: -150px;
+  right: -100px;
+  background: radial-gradient(circle, rgba(201, 168, 76, 0.12) 0%, transparent 70%);
+}
+
+.orbBottom {
+  width: 400px;
+  height: 400px;
+  bottom: -100px;
+  left: -80px;
+  background: radial-gradient(circle, rgba(10, 107, 103, 0.2) 0%, transparent 70%);
+}
+
+.content {
+  position: relative;
+  z-index: 10;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-16);
+  align-items: center;
+  padding-top: var(--space-24);
+  padding-bottom: var(--space-16);
+}
+
+/* Text Block */
+.textBlock {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  background: rgba(201, 168, 76, 0.15);
+  border: 1px solid rgba(201, 168, 76, 0.35);
+  color: var(--color-accent-light);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-full);
+  width: fit-content;
+}
+
+.badgeIcon {
+  color: var(--color-accent);
+}
+
+.title {
+  font-size: clamp(var(--text-4xl), 5vw, var(--text-6xl));
+  color: var(--color-white);
+  line-height: 1.15;
+  font-weight: 700;
+}
+
+.title em {
+  font-style: italic;
+  color: var(--color-accent-light);
+  display: block;
+}
+
+.subtitle {
+  font-size: var(--text-lg);
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.75;
+  max-width: 520px;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+/* Quick Stats */
+.quickStats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-4);
+  padding-top: var(--space-4);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.statValue {
+  font-family: var(--font-serif);
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  color: var(--color-accent-light);
+}
+
+.statLabel {
+  font-size: var(--text-xs);
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* Right Panel */
+.rightPanel {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.heroImageFrame {
+  width: 300px;
+  height: 370px;
+  border-radius: var(--radius-xl);
+  border: 1px solid rgba(201, 168, 76, 0.25);
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.04);
+  position: relative;
+}
+
+.heroImagePlaceholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  padding: var(--space-6);
+}
+
+.heroIllustration {
+  width: 100%;
+  height: auto;
+}
+
+.heroImageCaption {
+  font-family: var(--font-serif);
+  font-size: var(--text-sm);
+  color: rgba(255, 255, 255, 0.5);
+  font-style: italic;
+  text-align: center;
+}
+
+/* Floating Cards */
+.cardStack {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 20;
+}
+
+.floatingCard {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  background: rgba(10, 26, 25, 0.85);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(201, 168, 76, 0.3);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
+  box-shadow: var(--shadow-lg);
+  white-space: nowrap;
+}
+
+.floatingCard strong {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: var(--text-base);
+  color: var(--color-white);
+  font-weight: 700;
+}
+
+.floatingCard p {
+  font-size: var(--text-xs);
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.card1 {
+  top: 15%;
+  left: -10%;
+}
+
+.card2 {
+  bottom: 20%;
+  right: -8%;
+}
+
+/* Scroll Indicator */
+.scrollIndicator {
+  position: absolute;
+  bottom: var(--space-8);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--color-white);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.scrollIndicator:hover {
+  background: rgba(201, 168, 76, 0.2);
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .content {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .title em {
+    display: inline;
+  }
+
+  .subtitle {
+    margin: 0 auto;
+  }
+
+  .badge {
+    margin: 0 auto;
+  }
+
+  .actions {
+    justify-content: center;
+  }
+
+  .quickStats {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 320px;
+    margin: 0 auto;
+  }
+
+  .statItem {
+    align-items: center;
+  }
+
+  .rightPanel {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .actions .btn {
+    width: 100%;
+  }
+}
