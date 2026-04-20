@@ -104,7 +104,7 @@ export const PROFILE = {
     "Didukung oleh tenaga pendidik berpengalaman dan kurikulum yang relevan dengan kebutuhan industri, kami telah membantu ratusan warga belajar meraih ijazah setara, sertifikasi kompetensi, dan keterampilan hidup yang nyata.",
   ],
   achievements: [
-    { label: "Berdiri Sejak", value: "2013" },
+    { label: "Berdiri Sejak", value: "2021" },
     { label: "Akreditasi", value: "B" },
     { label: "Ijin Operasional", value: "Aktif" },
   ],
@@ -112,7 +112,7 @@ export const PROFILE = {
 
 export const STATS = [
   { value: "500+", label: "Alumni", suffix: "" },
-  { value: "10+", label: "Tahun Beroperasi", suffix: "" },
+  { value: "5+", label: "Tahun Beroperasi", suffix: "" },
   { value: "98%", label: "Tingkat Kelulusan", suffix: "" },
   { value: "2", label: "Program Unggulan", suffix: "" },
 ];

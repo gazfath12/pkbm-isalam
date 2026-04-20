@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Preloader from "@/components/Preloader/Preloader";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
     siteName: "Pusdiklat ISALAM",
     images: [
       {
-        url: "/assets/logo.png",
+        url: "/assets/logo_transparent.png",
         width: 800,
         height: 600,
         alt: "Logo Pusdiklat ISALAM",
@@ -30,7 +31,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Pusdiklat ISALAM — PKBM & LKP",
     description: "Lembaga pendidikan kesetaraan dan kursus pelatihan di Karanganyar.",
-    images: ["/assets/logo.png"],
+    images: ["/assets/logo_transparent.png"],
   },
 };
 
@@ -49,7 +50,10 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
       </head>
-      <body>{children}</body>
+      <body>
+        <Preloader />
+        {children}
+      </body>
     </html>
   );
 }
