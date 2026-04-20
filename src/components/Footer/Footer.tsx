@@ -32,7 +32,7 @@ export default function Footer() {
             <div className={styles.footerBrand}>
               <div className={styles.footerLogo}>
                 <Image
-                  src="/assets/logo.jpg"
+                  src="/assets/logo_transparent.png"
                   alt="Logo Pusdiklat ISALAM"
                   width={44}
                   height={44}

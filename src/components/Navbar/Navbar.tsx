@@ -52,7 +52,7 @@ export default function Navbar() {
         <a href="#beranda" className={styles.logo} onClick={(e) => handleNavClick(e, "#beranda")}>
           <div className={styles.logoImgWrap}>
             <Image
-              src="/assets/logo.jpg"
+              src="/assets/logo_transparent.png"
               alt="Logo Pusdiklat ISALAM"
               width={48}
               height={48}
