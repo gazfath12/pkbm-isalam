@@ -52,6 +52,7 @@
   height: 52px;
   object-fit: contain;
   mix-blend-mode: screen;
+  filter: brightness(1.1) contrast(1.1);
 }
 
 .logoTextWrap {
