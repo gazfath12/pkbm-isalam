@@ -5,17 +5,18 @@
   right: 0;
   z-index: var(--z-navbar);
   padding: var(--space-4) 0;
+  background: rgba(26, 8, 0, 0.15);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(250, 163, 7, 0.12);
   transition: all var(--transition-base);
-  background: transparent;
 }
 
 .navbar.scrolled {
-  background: rgba(10, 26, 25, 0.95);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
   padding: var(--space-3) 0;
-  box-shadow: 0 2px 30px rgba(0, 0, 0, 0.3);
-  border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+  background: rgba(26, 8, 0, 0.92);
+  border-bottom-color: rgba(250, 163, 7, 0.25);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
 }
 
 .inner {
@@ -24,7 +25,6 @@
   padding: 0 var(--space-6);
   display: flex;
   align-items: center;
-  justify-content: space-between;
   gap: var(--space-8);
 }
 
@@ -35,30 +35,45 @@
   gap: var(--space-3);
   text-decoration: none;
   flex-shrink: 0;
+  margin-right: auto;
 }
 
-.logoMark {
-  width: 40px;
-  height: 40px;
-  filter: drop-shadow(0 2px 8px rgba(201, 168, 76, 0.4));
-  transition: transform var(--transition-base);
+.logoImgWrap {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
-.logo:hover .logoMark {
-  transform: scale(1.05);
+.logoImg {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+  mix-blend-mode: screen;
 }
 
-.logoText {
+.logoTextWrap {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.logoTitle {
   font-family: var(--font-serif);
   font-size: var(--text-xl);
   font-weight: 700;
-  color: var(--color-white);
-  letter-spacing: -0.01em;
+  color: var(--color-accent);
+  letter-spacing: 0.02em;
 }
 
-.logoText em {
-  color: var(--color-accent);
-  font-style: italic;
+.logoSub {
+  font-size: 0.65rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.65);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 /* Desktop Nav */
@@ -69,7 +84,6 @@
 }
 
 .navLink {
-  font-family: var(--font-sans);
   font-size: var(--text-sm);
   font-weight: 500;
   color: rgba(255, 255, 255, 0.85);
@@ -90,11 +104,11 @@
   height: 2px;
   background: var(--color-accent);
   border-radius: var(--radius-full);
-  transition: width var(--transition-base);
+  transition: width var(--transition-fast);
 }
 
 .navLink:hover {
-  color: var(--color-white);
+  color: var(--color-accent-light);
 }
 
 .navLink:hover::after {
@@ -103,16 +117,18 @@
 
 /* CTA Button */
 .ctaBtn {
-  font-size: var(--text-sm) !important;
-  padding: var(--space-2) var(--space-6) !important;
+  font-size: var(--text-base) !important;
+  padding: var(--space-3) var(--space-6) !important;
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 
 /* Hamburger */
 .hamburger {
   display: none;
   background: none;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  color: var(--color-white);
+  border: 1px solid rgba(250, 163, 7, 0.4);
+  color: var(--color-accent);
   cursor: pointer;
   padding: var(--space-2);
   border-radius: var(--radius-sm);
@@ -120,51 +136,47 @@
 }
 
 .hamburger:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(250, 163, 7, 0.1);
   border-color: var(--color-accent);
-  color: var(--color-accent);
 }
 
 /* Mobile Menu */
 .mobileMenu {
+  background: rgba(26, 8, 0, 0.97);
+  border-top: 1px solid rgba(250, 163, 7, 0.2);
+  padding: var(--space-4);
   display: flex;
   flex-direction: column;
-  padding: var(--space-4) var(--space-6) var(--space-6);
-  gap: var(--space-1);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  gap: var(--space-2);
   overflow: hidden;
 }
 
 .mobileNavLink {
-  font-size: var(--text-base);
-  font-weight: 500;
+  display: block;
+  padding: var(--space-3) var(--space-4);
   color: rgba(255, 255, 255, 0.85);
   text-decoration: none;
-  padding: var(--space-3) var(--space-4);
+  font-size: var(--text-base);
+  font-weight: 500;
   border-radius: var(--radius-sm);
   transition: all var(--transition-fast);
 }
 
 .mobileNavLink:hover {
-  background: rgba(255, 255, 255, 0.08);
-  color: var(--color-white);
+  background: rgba(250, 163, 7, 0.1);
+  color: var(--color-accent-light);
+  padding-left: var(--space-6);
 }
 
 .mobileCta {
-  margin-top: var(--space-4);
+  margin-top: var(--space-2);
   text-align: center;
+  width: 100%;
+  justify-content: center;
 }
 
-/* Responsive */
 @media (max-width: 900px) {
-  .desktopNav,
-  .ctaBtn {
-    display: none;
-  }
-
-  .hamburger {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+  .desktopNav { display: none; }
+  .ctaBtn { display: none; }
+  .hamburger { display: flex; }
 }

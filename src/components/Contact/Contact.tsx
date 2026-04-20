@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import {
-  FiPhone,
   FiMail,
   FiMapPin,
   FiClock,
@@ -12,43 +11,44 @@ import {
   FiFacebook,
   FiYoutube,
 } from "react-icons/fi";
+import { CONTACT, SITE } from "@/data/siteData";
 import styles from "./Contact.module.css";
 
 const contacts = [
   {
-    id: "contact-phone",
-    icon: FiPhone,
-    label: "Telepon",
-    value: "+62 812-3456-7890",
-    sub: "Senin – Sabtu, 08:00 – 17:00",
-    action: "tel:+6281234567890",
-    color: "var(--color-primary-light)",
-  },
-  {
     id: "contact-wa",
     icon: FiMessageCircle,
     label: "WhatsApp",
-    value: "+62 812-3456-7890",
+    value: `+${CONTACT.whatsapp}`,
     sub: "Respon cepat via chat",
-    action: "https://wa.me/6281234567890",
+    action: `https://wa.me/${CONTACT.whatsapp}`,
     color: "#25d366",
   },
   {
     id: "contact-email",
     icon: FiMail,
     label: "Email",
-    value: "info@pkbmlkp.sch.id",
+    value: CONTACT.email,
     sub: "Balasan dalam 1×24 jam",
-    action: "mailto:info@pkbmlkp.sch.id",
+    action: `mailto:${CONTACT.email}`,
     color: "var(--color-accent)",
+  },
+  {
+    id: "contact-hours",
+    icon: FiClock,
+    label: "Jam Operasional",
+    value: CONTACT.operationalHours,
+    sub: "Hari kerja",
+    action: "#",
+    color: "var(--color-primary-light)",
   },
   {
     id: "contact-address",
     icon: FiMapPin,
     label: "Alamat",
-    value: "Jl. Pendidikan No. 12, Kota",
-    sub: "Jawa Tengah, Indonesia",
-    action: "https://maps.google.com",
+    value: CONTACT.address,
+    sub: "PKBM Inisiator Salam Kariim & LKP ISALAM",
+    action: `https://www.google.com/maps/search/${encodeURIComponent(CONTACT.address)}`,
     color: "#fc5c7d",
   },
 ];

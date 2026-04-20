@@ -2,14 +2,14 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "PKBM & LKP - Pusat Kegiatan Belajar Masyarakat",
+  title: "Pusdiklat ISALAM — PKBM Inisiator Salam Kariim & LKP ISALAM",
   description:
-    "Lembaga pendidikan nonformal yang berkomitmen memberdayakan masyarakat melalui program PKBM dan LKP. Bergabunglah bersama kami dalam mencerdaskan kehidupan bangsa.",
-  keywords: "PKBM, LKP, pendidikan nonformal, kejar paket, kursus, pelatihan",
+    "Pusdiklat ISALAM adalah lembaga pendidikan dan pelatihan berbasis nilai keislaman di Colomadu, Karanganyar. Program PKBM Inisiator Salam Kariim dan LKP ISALAM hadir untuk memberdayakan masyarakat.",
+  keywords: "Pusdiklat ISALAM, PKBM Inisiator Salam Kariim, LKP ISALAM, pendidikan nonformal, kejar paket, kursus, pelatihan, Karanganyar",
   openGraph: {
-    title: "PKBM & LKP - Pusat Kegiatan Belajar Masyarakat",
+    title: "Pusdiklat ISALAM — PKBM & LKP",
     description:
-      "Lembaga pendidikan nonformal yang berkomitmen memberdayakan masyarakat.",
+      "Pusat pengembangan SDM unggul, profesional, dan berakhlak mulia di Colomadu, Karanganyar.",
     type: "website",
   },
 };

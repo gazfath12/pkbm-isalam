@@ -1,8 +1,10 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiMenu, FiX, FiChevronRight } from "react-icons/fi";
+import { SITE } from "@/data/siteData";
 import styles from "./Navbar.module.css";
 
 const navLinks = [
@@ -10,7 +12,7 @@ const navLinks = [
   { href: "#profil", label: "Profil" },
   { href: "#program", label: "Program" },
   { href: "#statistik", label: "Statistik" },
-  { href: "#artikel", label: "Artikel" },
+  { href: "#artikel", label: "Fawaid" },
   { href: "#kontak", label: "Kontak" },
 ];
 
@@ -27,8 +29,15 @@ export default function Navbar() {
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     setMobileOpen(false);
-    const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
+    
+    // Add a slight delay to allow the mobile menu to close before calculating position
+    setTimeout(() => {
+      const el = document.querySelector(href);
+      if (el) {
+        const y = el.getBoundingClientRect().top + window.scrollY - 90;
+        window.scrollTo({ top: y, behavior: "smooth" });
+      }
+    }, 50);
   };
 
   return (
@@ -41,22 +50,20 @@ export default function Navbar() {
       <div className={styles.inner}>
         {/* Logo */}
         <a href="#beranda" className={styles.logo} onClick={(e) => handleNavClick(e, "#beranda")}>
-          <div className={styles.logoMark}>
-            <svg width="32" height="32" viewBox="0 0 40 40" fill="none">
-              <rect width="40" height="40" rx="10" fill="url(#logoGrad)" />
-              <path d="M8 28L20 12L32 28H8Z" fill="white" opacity="0.9"/>
-              <circle cx="20" cy="18" r="4" fill="rgba(255,255,255,0.5)"/>
-              <defs>
-                <linearGradient id="logoGrad" x1="0" y1="0" x2="40" y2="40">
-                  <stop stopColor="#0a4d4a"/>
-                  <stop offset="1" stopColor="#c9a84c"/>
-                </linearGradient>
-              </defs>
-            </svg>
+          <div className={styles.logoImgWrap}>
+            <Image
+              src="/assets/logo.jpg"
+              alt="Logo Pusdiklat ISALAM"
+              width={48}
+              height={48}
+              className={styles.logoImg}
+              priority
+            />
           </div>
-          <span className={styles.logoText}>
-            PKBM <em>&</em> LKP
-          </span>
+          <div className={styles.logoTextWrap}>
+            <span className={styles.logoTitle}>{SITE.shortName}</span>
+            <span className={styles.logoSub}>{SITE.tagline}</span>
+          </div>
         </a>
 
         {/* Desktop Nav */}
@@ -74,7 +81,11 @@ export default function Navbar() {
         </nav>
 
         {/* CTA */}
-        <a href="#daftar" className={`btn btn-primary ${styles.ctaBtn}`} onClick={(e) => handleNavClick(e, "#daftar")}>
+        <a
+          href="#daftar"
+          className={`btn btn-primary ${styles.ctaBtn}`}
+          onClick={(e) => handleNavClick(e, "#daftar")}
+        >
           Daftar Sekarang
           <FiChevronRight size={16} />
         </a>

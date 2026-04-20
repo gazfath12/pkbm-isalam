@@ -1,14 +1,16 @@
 "use client";
 
+import Image from "next/image";
 import styles from "./Footer.module.css";
-import { FiHeart } from "react-icons/fi";
+import { FiHeart, FiMessageCircle, FiInstagram, FiFacebook, FiMapPin } from "react-icons/fi";
+import { SITE, CONTACT, PROGRAMS } from "@/data/siteData";
 
 const navLinks = [
   { href: "#beranda", label: "Beranda" },
   { href: "#profil", label: "Profil" },
   { href: "#program", label: "Program" },
   { href: "#statistik", label: "Statistik" },
-  { href: "#artikel", label: "Artikel" },
+  { href: "#artikel", label: "Fawaid" },
   { href: "#daftar", label: "Daftar" },
   { href: "#kontak", label: "Kontak" },
 ];
@@ -29,25 +31,45 @@ export default function Footer() {
             {/* Brand */}
             <div className={styles.footerBrand}>
               <div className={styles.footerLogo}>
-                <svg width="36" height="36" viewBox="0 0 40 40" fill="none">
-                  <rect width="40" height="40" rx="10" fill="url(#footerLogoGrad)" />
-                  <path d="M8 28L20 12L32 28H8Z" fill="white" opacity="0.9"/>
-                  <circle cx="20" cy="18" r="4" fill="rgba(255,255,255,0.5)"/>
-                  <defs>
-                    <linearGradient id="footerLogoGrad" x1="0" y1="0" x2="40" y2="40">
-                      <stop stopColor="#0a4d4a"/>
-                      <stop offset="1" stopColor="#c9a84c"/>
-                    </linearGradient>
-                  </defs>
-                </svg>
-                <span className={styles.footerLogoText}>PKBM & LKP</span>
+                <Image
+                  src="/assets/logo.jpg"
+                  alt="Logo Pusdiklat ISALAM"
+                  width={44}
+                  height={44}
+                  className={styles.footerLogoImg}
+                />
+                <div className={styles.footerLogoCopy}>
+                  <span className={styles.footerLogoTitle}>{SITE.shortName}</span>
+                  <span className={styles.footerLogoSub}>{SITE.tagline}</span>
+                </div>
               </div>
               <p className={styles.footerTagline}>
-                Memberdayakan Masyarakat Melalui Pendidikan Berkualitas yang Inklusif dan Bermartabat.
+                {SITE.description}
               </p>
+              <div className={styles.footerContact}>
+                <a
+                  href={`https://wa.me/${CONTACT.whatsapp}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className={styles.footerWa}
+                  id="footer-wa-btn"
+                >
+                  <FiMessageCircle size={16} />
+                  WhatsApp
+                </a>
+                <a
+                  href={`https://www.google.com/maps/search/${encodeURIComponent(CONTACT.address)}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className={styles.footerLocation}
+                >
+                  <FiMapPin size={14} />
+                  {CONTACT.address}
+                </a>
+              </div>
             </div>
 
-            {/* Quick Links */}
+            {/* Navigation */}
             <div className={styles.footerSection}>
               <h5 className={styles.footerHeading}>Navigasi</h5>
               <ul className={styles.footerLinks}>
@@ -67,14 +89,21 @@ export default function Footer() {
             {/* Programs */}
             <div className={styles.footerSection}>
               <h5 className={styles.footerHeading}>Program</h5>
-              <ul className={styles.footerLinks}>
+              <div className={styles.programBadges}>
+                {PROGRAMS.map((p) => (
+                  <div key={p.id} className={styles.programBadge}>
+                    <span className={styles.programBadgeTag}>{p.tag}</span>
+                    <span className={styles.programBadgeName}>{p.name}</span>
+                  </div>
+                ))}
+              </div>
+              <ul className={styles.footerLinks} style={{ marginTop: "0.75rem" }}>
                 {[
-                  "Kejar Paket A",
-                  "Kejar Paket B",
-                  "Kejar Paket C",
+                  "Kejar Paket A (SD)",
+                  "Kejar Paket B (SMP)",
+                  "Kejar Paket C (SMA)",
                   "Kursus Menjahit",
                   "Kursus Komputer",
-                  "Tata Kecantikan",
                 ].map((p) => (
                   <li key={p}>
                     <button className={styles.footerLink} onClick={() => scrollToSection("#program")}>
@@ -93,6 +122,7 @@ export default function Footer() {
                   { label: "Terdaftar Kemendikbud", icon: "🏛️" },
                   { label: "Akreditasi B", icon: "🎖️" },
                   { label: "NPSN Resmi", icon: "📋" },
+                  { label: "Ijin Operasional Aktif", icon: "✅" },
                 ].map((b) => (
                   <div key={b.label} className={styles.legalBadge}>
                     <span>{b.icon}</span>
@@ -109,7 +139,7 @@ export default function Footer() {
         <div className="container">
           <div className={styles.bottomInner}>
             <p className={styles.copyright}>
-              &copy; {year} PKBM & LKP. Hak cipta dilindungi undang-undang.
+              &copy; {year} {SITE.name}. Hak cipta dilindungi undang-undang.
             </p>
             <p className={styles.madeWith}>
               Dibuat dengan <FiHeart size={13} className={styles.heartIcon} /> untuk kemajuan pendidikan

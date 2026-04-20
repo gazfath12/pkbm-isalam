@@ -1,4 +1,4 @@
-// app/registration/Registration.tsx
+// Registration.tsx - Form langsung ke WhatsApp (privat, tidak ditampilkan publik)
 "use client";
 
 import { useState } from "react";
@@ -6,33 +6,23 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import {
   FiUser,
-  FiMail,
   FiPhone,
   FiBookOpen,
   FiSend,
-  FiCheck,
   FiShield,
   FiClock,
   FiAward,
+  FiMessageCircle,
+  FiMapPin,
 } from "react-icons/fi";
+import { REGISTRATION_PROGRAMS, SITE } from "@/data/siteData";
 import styles from "./Registration.module.css";
-
-const programs = [
-  "PKBM - Kejar Paket A (Setara SD)",
-  "PKBM - Kejar Paket B (Setara SMP)",
-  "PKBM - Kejar Paket C (Setara SMA)",
-  "LKP - Menjahit & Tata Busana",
-  "LKP - Komputer & Teknologi Informasi",
-  "LKP - Tata Kecantikan & Salon",
-  "LKP - Otomotif & Teknik",
-  "LKP - Bahasa Asing & Komunikasi",
-];
 
 type FormData = {
   name: string;
-  email: string;
   phone: string;
   program: string;
+  address: string;
   message: string;
 };
 
@@ -42,22 +32,19 @@ export default function Registration() {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
   const [formData, setFormData] = useState<FormData>({
     name: "",
-    email: "",
     phone: "",
     program: "",
+    address: "",
     message: "",
   });
   const [errors, setErrors] = useState<FormErrors>({});
-  const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const validate = (): boolean => {
     const newErrors: FormErrors = {};
     if (!formData.name.trim()) newErrors.name = "Nama wajib diisi";
-    if (!formData.email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/))
-      newErrors.email = "Email tidak valid";
     if (!formData.phone.match(/^(\+62|0)[0-9]{8,12}$/))
-      newErrors.phone = "Nomor telepon tidak valid";
+      newErrors.phone = "Nomor HP tidak valid (contoh: 08xxxxxxxxxx)";
     if (!formData.program) newErrors.program = "Pilih salah satu program";
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -79,16 +66,34 @@ export default function Registration() {
     e.preventDefault();
     if (!validate()) return;
     setLoading(true);
-    // Simulasi pengiriman data
+
+    // Build WhatsApp message
+    const waMessage = [
+      `*PENDAFTARAN PUSDIKLAT ISALAM*`,
+      ``,
+      `Assalamu'alaikum, saya ingin mendaftar program berikut:`,
+      ``,
+      `📛 *Nama Lengkap:* ${formData.name}`,
+      `📱 *No. HP:* ${formData.phone}`,
+      `📚 *Program:* ${formData.program}`,
+      formData.address ? `📍 *Alamat:* ${formData.address}` : "",
+      formData.message ? `💬 *Pesan:* ${formData.message}` : "",
+      ``,
+      `Mohon informasi lebih lanjut. Terima kasih.`,
+    ]
+      .filter(Boolean)
+      .join("\n");
+
+    const waUrl = `https://wa.me/${SITE.whatsappNumber}?text=${encodeURIComponent(waMessage)}`;
+
     setTimeout(() => {
       setLoading(false);
-      setSubmitted(true);
-    }, 1500);
+      window.open(waUrl, "_blank");
+    }, 800);
   };
 
   return (
     <section id="daftar" className={styles.registration} ref={ref}>
-      {/* Background decorative elements */}
       <div className={styles.bgGradient} />
       <div className={styles.bgPattern} />
 
@@ -110,6 +115,7 @@ export default function Registration() {
               <p className={styles.infoDesc}>
                 Daftarkan dirimu sekarang dan bergabunglah bersama ratusan warga
                 belajar yang telah merasakan manfaat nyata dari program kami.
+                Data pendaftaran akan langsung diterima tim kami via WhatsApp.
               </p>
 
               <div className={styles.benefitsGrid}>
@@ -131,23 +137,40 @@ export default function Registration() {
                   </div>
                   <span>Ijazah & sertifikat resmi</span>
                 </div>
+                <div className={styles.benefitItem}>
+                  <div className={styles.benefitIcon}>
+                    <FiMessageCircle />
+                  </div>
+                  <span>Respons cepat via WhatsApp</span>
+                </div>
               </div>
 
-              {/* Testimoni singkat atau statistik */}
               <div className={styles.statsContainer}>
                 <div className={styles.stat}>
                   <span className={styles.statNumber}>500+</span>
-                  <span className={styles.statLabel}>Siswa Aktif</span>
+                  <span className={styles.statLabel}>Alumni</span>
                 </div>
                 <div className={styles.stat}>
-                  <span className={styles.statNumber}>25+</span>
+                  <span className={styles.statNumber}>2</span>
                   <span className={styles.statLabel}>Program</span>
                 </div>
                 <div className={styles.stat}>
                   <span className={styles.statNumber}>98%</span>
-                  <span className={styles.statLabel}>Kepuasan</span>
+                  <span className={styles.statLabel}>Kelulusan</span>
                 </div>
               </div>
+
+              {/* WhatsApp direct button */}
+              <a
+                href={`https://wa.me/${SITE.whatsappNumber}?text=${encodeURIComponent("Assalamu'alaikum, saya ingin tanya informasi program di Pusdiklat ISALAM.")}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.directWaBtn}
+                id="direct-wa-btn"
+              >
+                <FiMessageCircle size={20} />
+                Chat WhatsApp Langsung
+              </a>
             </div>
           </motion.div>
 
@@ -159,173 +182,131 @@ export default function Registration() {
             transition={{ duration: 0.7, delay: 0.1 }}
           >
             <div className={styles.formCard}>
-              {submitted ? (
-                <div className={styles.successState}>
-                  <div className={styles.successIcon}>
-                    <FiCheck />
+              <form className={styles.form} onSubmit={handleSubmit} noValidate>
+                <div className={styles.formHeader}>
+                  <div className={styles.waIndicator}>
+                    <FiMessageCircle size={18} />
+                    <span>Data dikirim via WhatsApp</span>
                   </div>
-                  <h3>Pendaftaran Berhasil!</h3>
-                  <p>
-                    Terima kasih, <strong>{formData.name}</strong>! Tim kami
-                    akan menghubungi Anda melalui nomor{" "}
-                    <strong>{formData.phone}</strong> dalam 1×24 jam untuk
-                    konfirmasi.
+                  <h3 className={styles.formTitle}>Formulir Pendaftaran</h3>
+                  <p className={styles.formSubtitle}>
+                    Isi data di bawah ini, lalu klik kirim. WhatsApp Anda akan
+                    terbuka otomatis dengan pesan siap dikirim ke tim kami.
                   </p>
-                  <button
-                    className={styles.resetButton}
-                    onClick={() => {
-                      setSubmitted(false);
-                      setFormData({
-                        name: "",
-                        email: "",
-                        phone: "",
-                        program: "",
-                        message: "",
-                      });
-                    }}
-                  >
-                    Daftar Program Lain
-                  </button>
                 </div>
-              ) : (
-                <form className={styles.form} onSubmit={handleSubmit} noValidate>
-                  <div className={styles.formHeader}>
-                    <h3 className={styles.formTitle}>Formulir Pendaftaran</h3>
-                    <p className={styles.formSubtitle}>
-                      Isi data dengan benar. Tim kami akan segera menghubungi
-                      Anda.
-                    </p>
-                  </div>
 
-                  <div className={styles.formGroup}>
-                    <label htmlFor="name">Nama Lengkap *</label>
-                    <div
-                      className={`${styles.inputWrapper} ${
-                        errors.name ? styles.error : ""
-                      }`}
-                    >
-                      <FiUser className={styles.inputIcon} />
-                      <input
-                        id="name"
-                        name="name"
-                        type="text"
-                        placeholder="Masukkan nama lengkap"
-                        value={formData.name}
-                        onChange={handleChange}
-                      />
-                    </div>
-                    {errors.name && (
-                      <span className={styles.errorMessage}>{errors.name}</span>
-                    )}
-                  </div>
-
-                  <div className={styles.formRow}>
-                    <div className={styles.formGroup}>
-                      <label htmlFor="email">Email *</label>
-                      <div
-                        className={`${styles.inputWrapper} ${
-                          errors.email ? styles.error : ""
-                        }`}
-                      >
-                        <FiMail className={styles.inputIcon} />
-                        <input
-                          id="email"
-                          name="email"
-                          type="email"
-                          placeholder="contoh@email.com"
-                          value={formData.email}
-                          onChange={handleChange}
-                        />
-                      </div>
-                      {errors.email && (
-                        <span className={styles.errorMessage}>
-                          {errors.email}
-                        </span>
-                      )}
-                    </div>
-                    <div className={styles.formGroup}>
-                      <label htmlFor="phone">No. HP / Telepon *</label>
-                      <div
-                        className={`${styles.inputWrapper} ${
-                          errors.phone ? styles.error : ""
-                        }`}
-                      >
-                        <FiPhone className={styles.inputIcon} />
-                        <input
-                          id="phone"
-                          name="phone"
-                          type="tel"
-                          placeholder="08xxxxxxxxxx"
-                          value={formData.phone}
-                          onChange={handleChange}
-                        />
-                      </div>
-                      {errors.phone && (
-                        <span className={styles.errorMessage}>
-                          {errors.phone}
-                        </span>
-                      )}
-                    </div>
-                  </div>
-
-                  <div className={styles.formGroup}>
-                    <label htmlFor="program">Program yang Dipilih *</label>
-                    <div
-                      className={`${styles.inputWrapper} ${
-                        errors.program ? styles.error : ""
-                      }`}
-                    >
-                      <FiBookOpen className={styles.inputIcon} />
-                      <select
-                        id="program"
-                        name="program"
-                        value={formData.program}
-                        onChange={handleChange}
-                      >
-                        <option value="">— Pilih Program —</option>
-                        {programs.map((p) => (
-                          <option key={p} value={p}>
-                            {p}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-                    {errors.program && (
-                      <span className={styles.errorMessage}>
-                        {errors.program}
-                      </span>
-                    )}
-                  </div>
-
-                  <div className={styles.formGroup}>
-                    <label htmlFor="message">Pesan / Pertanyaan</label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      rows={3}
-                      placeholder="Ceritakan kondisi belajar Anda atau pertanyaan yang ingin disampaikan..."
-                      value={formData.message}
+                {/* Nama */}
+                <div className={styles.formGroup}>
+                  <label htmlFor="name">Nama Lengkap *</label>
+                  <div className={`${styles.inputWrapper} ${errors.name ? styles.error : ""}`}>
+                    <FiUser className={styles.inputIcon} />
+                    <input
+                      id="name"
+                      name="name"
+                      type="text"
+                      placeholder="Masukkan nama lengkap"
+                      value={formData.name}
                       onChange={handleChange}
                     />
                   </div>
+                  {errors.name && <span className={styles.errorMessage}>{errors.name}</span>}
+                </div>
 
-                  <button
-                    type="submit"
-                    className={styles.submitButton}
-                    disabled={loading}
-                  >
-                    {loading ? (
-                      <span className={styles.loader}>
-                        Mengirim<span>.</span><span>.</span><span>.</span>
-                      </span>
-                    ) : (
-                      <>
-                        <FiSend /> Kirim Pendaftaran
-                      </>
-                    )}
-                  </button>
-                </form>
-              )}
+                {/* Phone */}
+                <div className={styles.formGroup}>
+                  <label htmlFor="phone">No. HP (WhatsApp) *</label>
+                  <div className={`${styles.inputWrapper} ${errors.phone ? styles.error : ""}`}>
+                    <FiPhone className={styles.inputIcon} />
+                    <input
+                      id="phone"
+                      name="phone"
+                      type="tel"
+                      placeholder="08xxxxxxxxxx"
+                      value={formData.phone}
+                      onChange={handleChange}
+                    />
+                  </div>
+                  {errors.phone && <span className={styles.errorMessage}>{errors.phone}</span>}
+                </div>
+
+                {/* Program */}
+                <div className={styles.formGroup}>
+                  <label htmlFor="program">Program yang Dipilih *</label>
+                  <div className={`${styles.inputWrapper} ${errors.program ? styles.error : ""}`}>
+                    <FiBookOpen className={styles.inputIcon} />
+                    <select
+                      id="program"
+                      name="program"
+                      value={formData.program}
+                      onChange={handleChange}
+                    >
+                      <option value="">— Pilih Program —</option>
+                      <optgroup label="PKBM Inisiator Salam Kariim">
+                        {REGISTRATION_PROGRAMS.filter((p) => p.startsWith("PKBM")).map((p) => (
+                          <option key={p} value={p}>{p.replace("PKBM Inisiator Salam Kariim - ", "")}</option>
+                        ))}
+                      </optgroup>
+                      <optgroup label="LKP ISALAM">
+                        {REGISTRATION_PROGRAMS.filter((p) => p.startsWith("LKP")).map((p) => (
+                          <option key={p} value={p}>{p.replace("LKP ISALAM - ", "")}</option>
+                        ))}
+                      </optgroup>
+                    </select>
+                  </div>
+                  {errors.program && <span className={styles.errorMessage}>{errors.program}</span>}
+                </div>
+
+                {/* Address */}
+                <div className={styles.formGroup}>
+                  <label htmlFor="address">Alamat Tinggal</label>
+                  <div className={styles.inputWrapper}>
+                    <FiMapPin className={styles.inputIcon} />
+                    <input
+                      id="address"
+                      name="address"
+                      type="text"
+                      placeholder="Kecamatan / Kabupaten"
+                      value={formData.address}
+                      onChange={handleChange}
+                    />
+                  </div>
+                </div>
+
+                {/* Message */}
+                <div className={styles.formGroup}>
+                  <label htmlFor="message">Pesan / Pertanyaan</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows={3}
+                    placeholder="Ceritakan kondisi atau pertanyaan Anda..."
+                    value={formData.message}
+                    onChange={handleChange}
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  className={styles.submitButton}
+                  id="submit-registration-btn"
+                  disabled={loading}
+                >
+                  {loading ? (
+                    <span className={styles.loader}>
+                      Menyiapkan<span>.</span><span>.</span><span>.</span>
+                    </span>
+                  ) : (
+                    <>
+                      <FiSend size={18} />
+                      Kirim via WhatsApp
+                    </>
+                  )}
+                </button>
+
+                <p className={styles.privacyNote}>
+                  🔒 Data Anda aman dan tidak akan dipublikasikan. Hanya diterima langsung oleh tim kami.
+                </p>
+              </form>
             </div>
           </motion.div>
         </div>

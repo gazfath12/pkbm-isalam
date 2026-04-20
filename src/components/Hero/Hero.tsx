@@ -1,8 +1,13 @@
 "use client";
 
+import { useState, useEffect } from "react";
+import Image from "next/image";
 import { motion, Variants } from "framer-motion";
-import { FiChevronDown, FiBookOpen, FiAward } from "react-icons/fi";
+import { FiChevronDown, FiBookOpen, FiAward, FiChevronLeft, FiChevronRight } from "react-icons/fi";
+import { SITE, ACTIVITIES } from "@/data/siteData";
 import styles from "./Hero.module.css";
+
+const HERO_ACTIVITIES = ACTIVITIES.students.slice(0, 5);
 
 const container: Variants = {
   hidden: {},
@@ -20,14 +25,34 @@ const scrollToSection = (href: string) => {
 };
 
 export default function Hero() {
+  const [activeSlide, setActiveSlide] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveSlide((prev) => (prev + 1) % HERO_ACTIVITIES.length);
+    }, 3500);
+    return () => clearInterval(timer);
+  }, []);
+
+  const prevSlide = () => setActiveSlide((prev) => (prev - 1 + HERO_ACTIVITIES.length) % HERO_ACTIVITIES.length);
+  const nextSlide = () => setActiveSlide((prev) => (prev + 1) % HERO_ACTIVITIES.length);
+
   return (
     <section id="beranda" className={styles.hero}>
-      {/* Background Layer */}
-      <div className={styles.bgOverlay} />
-      <div className={styles.bgPattern} />
-      <div className={styles.bgGradient} />
+      {/* Background Slideshow */}
+      <div className={styles.bgSlideshow}>
+        {HERO_ACTIVITIES.map((act, i) => (
+          <div
+            key={act.src}
+            className={`${styles.bgSlide} ${i === activeSlide ? styles.bgSlideActive : ""}`}
+          >
+            <Image src={act.src} alt={act.alt} fill className={styles.bgImg} priority={i === 0} />
+          </div>
+        ))}
+        <div className={styles.bgOverlay} />
+      </div>
 
-      {/* Floating decorative elements */}
+      {/* Floating decorative orbs */}
       <div className={`${styles.floatOrb} ${styles.orbTop}`} />
       <div className={`${styles.floatOrb} ${styles.orbBottom}`} />
 
@@ -41,19 +66,21 @@ export default function Hero() {
         >
           <motion.div variants={item} className={styles.badge}>
             <FiAward className={styles.badgeIcon} />
-            Terakreditasi Resmi
+            Terakreditasi B — Resmi & Terpercaya
           </motion.div>
 
           <motion.h1 variants={item} className={styles.title}>
-            Memberdayakan Masyarakat{" "}
-            <em>Melalui Pendidikan</em>{" "}
-            Berkualitas
+            {SITE.name}
           </motion.h1>
 
+          <motion.p variants={item} className={styles.institutionSub}>
+            {SITE.tagline}
+          </motion.p>
+
           <motion.p variants={item} className={styles.subtitle}>
-            PKBM & LKP hadir sebagai lembaga pendidikan nonformal terpercaya yang membuka akses
-            belajar seluas-luasnya bagi seluruh lapisan masyarakat. Bersama kami, setiap orang
-            berhak mendapatkan pendidikan yang layak.
+            Pusat pengembangan SDM yang unggul, profesional, dan berakhlak mulia. Hadir melalui{" "}
+            <strong>PKBM Inisiator Salam Kariim</strong> dan <strong>LKP ISALAM</strong> untuk
+            memberdayakan seluruh lapisan masyarakat.
           </motion.p>
 
           <motion.div variants={item} className={styles.actions}>
@@ -62,8 +89,8 @@ export default function Hero() {
               className="btn btn-primary"
               onClick={() => scrollToSection("#daftar")}
             >
-              <FiBookOpen size={18} />
-              Daftar Program
+              Daftar Sekarang
+              <FiChevronRight size={26} style={{ marginLeft: '4px' }} />
             </button>
             <button
               id="hero-cta-program"
@@ -77,10 +104,10 @@ export default function Hero() {
           {/* Quick Stats */}
           <motion.div variants={item} className={styles.quickStats}>
             {[
-              { value: "500+", label: "Siswa Aktif" },
-              { value: "40+", label: "Pengajar" },
+              { value: "500+", label: "Warga Belajar" },
+              { value: "10+", label: "Tahun Beroperasi" },
               { value: "2", label: "Program Unggulan" },
-              { value: "10+", label: "Tahun Pengalaman" },
+              { value: "98%", label: "Lulus Ujian" },
             ].map((stat) => (
               <div key={stat.label} className={styles.statItem}>
                 <span className={styles.statValue}>{stat.value}</span>
@@ -90,51 +117,76 @@ export default function Hero() {
           </motion.div>
         </motion.div>
 
-        {/* Decorative Right Panel */}
+        {/* Photo Gallery Panel */}
         <motion.div
           className={styles.rightPanel}
           initial={{ opacity: 0, x: 60 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.9, delay: 0.4 }}
         >
-          <div className={styles.cardStack}>
-            <div className={`${styles.floatingCard} ${styles.card1} animate-float`}>
-              <FiBookOpen size={24} style={{ color: "var(--color-accent)" }} />
-              <div>
-                <strong>PKBM</strong>
-                <p>Pendidikan Kesetaraan</p>
-              </div>
-            </div>
-            <div className={`${styles.floatingCard} ${styles.card2}`} style={{ animation: "float 4.5s ease-in-out infinite 1s" }}>
-              <FiAward size={24} style={{ color: "var(--color-primary-light)" }} />
-              <div>
-                <strong>LKP</strong>
-                <p>Kursus & Pelatihan</p>
-              </div>
+          {/* Program Badges */}
+          <div className={`${styles.floatingCard} ${styles.card1} animate-float`}>
+            <FiBookOpen size={22} style={{ color: "var(--color-accent)" }} />
+            <div>
+              <strong>PKBM Inisiator Salam Kariim</strong>
+              <p>Pendidikan Kesetaraan</p>
             </div>
           </div>
-          <div className={styles.heroImageFrame}>
-            <div className={styles.heroImagePlaceholder}>
-              <svg viewBox="0 0 300 350" fill="none" xmlns="http://www.w3.org/2000/svg" className={styles.heroIllustration}>
-                <rect width="300" height="350" rx="24" fill="url(#heroGrad)" opacity="0.15"/>
-                <circle cx="150" cy="120" r="55" fill="url(#circleGrad)" opacity="0.9"/>
-                <circle cx="150" cy="104" r="28" fill="rgba(255,255,255,0.9)"/>
-                <rect x="60" y="190" width="180" height="8" rx="4" fill="rgba(255,255,255,0.4)"/>
-                <rect x="80" y="210" width="140" height="8" rx="4" fill="rgba(255,255,255,0.3)"/>
-                <rect x="100" y="230" width="100" height="8" rx="4" fill="rgba(255,255,255,0.2)"/>
-                <path d="M90 290 Q150 254 210 290" stroke="rgba(201,168,76,0.8)" strokeWidth="3" fill="none"/>
-                <defs>
-                  <linearGradient id="heroGrad" x1="0" y1="0" x2="300" y2="350">
-                    <stop stopColor="#c9a84c"/>
-                    <stop offset="1" stopColor="#0a4d4a"/>
-                  </linearGradient>
-                  <linearGradient id="circleGrad" x1="0" y1="0" x2="110" y2="110">
-                    <stop stopColor="#c9a84c"/>
-                    <stop offset="1" stopColor="#e0be76"/>
-                  </linearGradient>
-                </defs>
-              </svg>
-              <p className={styles.heroImageCaption}>Komunitas Belajar Kami</p>
+          <div
+            className={`${styles.floatingCard} ${styles.card2}`}
+            style={{ animation: "float 4.5s ease-in-out infinite 1s" }}
+          >
+            <FiAward size={22} style={{ color: "var(--color-accent-light)" }} />
+            <div>
+              <strong>LKP ISALAM</strong>
+              <p>Kursus & Pelatihan</p>
+            </div>
+          </div>
+
+          {/* Photo Slider */}
+          <div className={styles.photoFrame}>
+            <div className={styles.photoSlider}>
+              {HERO_ACTIVITIES.map((act, i) => (
+                <motion.div
+                  key={act.src}
+                  className={styles.photoSlide}
+                  animate={{
+                    opacity: i === activeSlide ? 1 : 0,
+                    scale: i === activeSlide ? 1 : 0.95,
+                  }}
+                  transition={{ duration: 0.5 }}
+                  style={{ position: "absolute", inset: 0 }}
+                >
+                  <Image src={act.src} alt={act.alt} fill className={styles.photoImg} />
+                </motion.div>
+              ))}
+              <div className={styles.photoCaption}>
+                {HERO_ACTIVITIES[activeSlide].caption}
+              </div>
+              <button
+                className={`${styles.sliderBtn} ${styles.sliderBtnPrev}`}
+                onClick={prevSlide}
+                aria-label="Previous photo"
+              >
+                <FiChevronLeft size={18} />
+              </button>
+              <button
+                className={`${styles.sliderBtn} ${styles.sliderBtnNext}`}
+                onClick={nextSlide}
+                aria-label="Next photo"
+              >
+                <FiChevronRight size={18} />
+              </button>
+            </div>
+            <div className={styles.photoDots}>
+              {HERO_ACTIVITIES.map((_, i) => (
+                <button
+                  key={i}
+                  className={`${styles.dot} ${i === activeSlide ? styles.dotActive : ""}`}
+                  onClick={() => setActiveSlide(i)}
+                  aria-label={`Go to slide ${i + 1}`}
+                />
+              ))}
             </div>
           </div>
         </motion.div>
