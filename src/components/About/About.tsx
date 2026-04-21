@@ -30,11 +30,11 @@ export default function About() {
           animate={inView ? "show" : "hidden"}
         >
           <span className="section-label">Tentang Kami</span>
-          <h2 className="section-title">Profil Pusdiklat ISALAM</h2>
+          <h2 className="section-title">Profil PKBM & LKP I-SALAM</h2>
           <div className="gold-divider" />
           <p className="section-subtitle">
-            Lembaga pengembangan SDM berbasis nilai-nilai keislaman yang hadir untuk memberdayakan
-            masyarakat melalui pendidikan dan pelatihan.
+            Lembaga pendidikan nonformal dan pelatihan keterampilan yang berdedikasi
+            memberdayakan masyarakat melalui pendidikan berkualitas berbasis nilai Islam.
           </p>
         </motion.div>
 

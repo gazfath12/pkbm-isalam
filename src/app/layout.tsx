@@ -8,24 +8,25 @@ export const viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Pusdiklat ISALAM — PKBM Inisiator Salam Kariim & LKP ISALAM",
+  metadataBase: new URL("https://isalam.sch.id"), // Update dengan domain asli
+  title: "PKBM & LKP I-SALAM — Pendidikan Kesetaraan & Pelatihan Vokasional",
   description:
-    "Pusdiklat ISALAM menghadirkan PKBM Inisiator Salam Kariim & LKP ISALAM di Colomadu, Karanganyar. Layanan pendidikan Kejar Paket A/B/C, kursus menjahit, komputer, dan pelatihan keterampilan vokasional berbasis nilai keislaman.",
-  keywords: "Pusdiklat ISALAM, PKBM Inisiator Salam Kariim, LKP ISALAM, Kejar Paket A, Kejar Paket B, Kejar Paket C, Kursus Menjahit Karanganyar, Kursus Komputer Colomadu, Pendidikan Kesetaraan, Pelatihan Kerja, Karanganyar, Jawa Tengah",
-  authors: [{ name: "Pusdiklat ISALAM" }],
+    "PKBM & LKP I-SALAM hadir di Colomadu, Karanganyar. Layanan Kejar Paket A/B/C terakreditasi B, kursus komputer, desain grafis, tata boga, hantaran, dan bimbel SD & SMP berbasis nilai keislaman.",
+  keywords: "PKBM I-SALAM, LKP I-SALAM, Bimbel I-SALAM, Kejar Paket A, Kejar Paket B, Kejar Paket C, Kursus Komputer, Desain Grafis, Tata Boga, Hantaran, Bimbel SD SMP, Colomadu, Karanganyar, Jawa Tengah",
+  authors: [{ name: "PKBM & LKP I-SALAM" }],
   robots: "index, follow",
   openGraph: {
-    title: "Pusdiklat ISALAM — Pendidikan Kesetaraan & Pelatihan Keterampilan",
+    title: "PKBM & LKP I-SALAM — Pendidikan Kesetaraan & Pelatihan Vokasional",
     description:
-      "Pusat pengembangan SDM unggul di Colomadu, Karanganyar. Menyediakan Kejar Paket A/B/C dan berbagai pelatihan vokasional profesional.",
-    url: "https://pusdiklat-isalam.com", // Ganti dengan domain asli jika sudah ada
-    siteName: "Pusdiklat ISALAM",
+      "Pusat pengembangan SDM unggul di Colomadu, Karanganyar. PKBM Akreditasi B, LKP Vokasi, dan Bimbel SD & SMP berbasis nilai Islam.",
+    url: "https://isalam.sch.id",
+    siteName: "PKBM & LKP I-SALAM",
     images: [
       {
         url: "/assets/logo_transparent.png",
         width: 800,
         height: 600,
-        alt: "Logo Pusdiklat ISALAM",
+        alt: "Logo PKBM & LKP I-SALAM",
       },
     ],
     locale: "id_ID",
@@ -33,8 +34,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Pusdiklat ISALAM — PKBM & LKP",
-    description: "Lembaga pendidikan kesetaraan dan kursus pelatihan di Karanganyar.",
+    title: "PKBM & LKP I-SALAM",
+    description: "Lembaga pendidikan kesetaraan, kursus vokasional, dan bimbel di Karanganyar, Jawa Tengah.",
     images: ["/assets/logo_transparent.png"],
   },
 };

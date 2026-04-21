@@ -3,6 +3,11 @@ import Hero from "@/components/Hero/Hero";
 import About from "@/components/About/About";
 import Programs from "@/components/Programs/Programs";
 import Stats from "@/components/Stats/Stats";
+import Team from "@/components/Team/Team";
+import Multimedia from "@/components/Multimedia/Multimedia";
+import Testimonials from "@/components/Testimonials/Testimonials";
+import Events from "@/components/Events/Events";
+import Downloads from "@/components/Downloads/Downloads";
 import Articles from "@/components/Articles/Articles";
 import Registration from "@/components/Registration/Registration";
 import Contact from "@/components/Contact/Contact";
@@ -12,7 +17,6 @@ import { getPublishedArticles } from "@/lib/actions/articles";
 export default async function Home() {
   const dbArticles = await getPublishedArticles();
 
-  // Memetakan artikel dari DB ke format yang dibutuhkan UI
   const colors = [
     "var(--color-primary)",
     "var(--color-accent-dark)",
@@ -26,8 +30,8 @@ export default async function Home() {
     tag: article.category,
     title: article.title,
     excerpt: article.excerpt,
-    date: new Date(article.createdAt).toLocaleDateString("id-ID", { day: 'numeric', month: 'long', year: 'numeric' }),
-    readTime: "3 menit", // Estimasi statis
+    date: new Date(article.createdAt).toLocaleDateString("id-ID", { day: "numeric", month: "long", year: "numeric" }),
+    readTime: "3 menit",
     category: article.category,
     imageUrl: article.imageUrl,
     color: colors[index % colors.length],
@@ -40,6 +44,11 @@ export default async function Home() {
       <About />
       <Programs />
       <Stats />
+      <Team />
+      <Testimonials />
+      <Multimedia />
+      <Events />
+      <Downloads />
       {mappedArticles.length > 0 && <Articles articles={mappedArticles} />}
       <Registration />
       <Contact />

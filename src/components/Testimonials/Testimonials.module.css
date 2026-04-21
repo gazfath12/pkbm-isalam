@@ -1,0 +1,231 @@
+.testimonials {
+  position: relative;
+  padding: var(--space-24) 0;
+  background: var(--color-white);
+  overflow: hidden;
+}
+
+.bgDecor {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 10% 30%, rgba(232, 93, 4, 0.05) 0%, transparent 50%),
+    radial-gradient(ellipse at 90% 70%, rgba(250, 163, 7, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* ===== FEATURED CARD ===== */
+.featuredCard {
+  max-width: 800px;
+  margin: 0 auto 2.5rem;
+  background: var(--color-white);
+  border: 1px solid var(--color-gray-100);
+  border-radius: var(--radius-xl);
+  padding: 3.5rem 3rem;
+  text-align: center;
+  position: relative;
+  box-shadow: var(--shadow-lg);
+}
+
+@media (max-width: 640px) {
+  .featuredCard { padding: 2.5rem 1.75rem; }
+}
+
+.quoteIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  color: white;
+  margin-bottom: 1.5rem;
+}
+
+.quoteText {
+  font-family: var(--font-serif);
+  font-size: clamp(var(--text-lg), 2.5vw, var(--text-2xl));
+  line-height: 1.65;
+  color: var(--color-dark);
+  margin-bottom: 1.5rem;
+  font-style: italic;
+}
+
+.stars {
+  display: flex;
+  justify-content: center;
+  gap: 0.25rem;
+  margin-bottom: 2rem;
+}
+
+.starIcon {
+  color: var(--color-accent);
+  fill: var(--color-accent);
+}
+
+.authorRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.authorAvatar {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-serif);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: white;
+  flex-shrink: 0;
+}
+
+.authorInfo {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  gap: 0.125rem;
+}
+
+.authorName {
+  font-size: var(--text-base);
+  color: var(--color-dark);
+  font-family: var(--font-sans);
+}
+
+.authorProgram {
+  font-size: var(--text-sm);
+  color: var(--color-gray-600);
+}
+
+/* ===== NAVIGATION ===== */
+.navRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.navBtn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid var(--color-gray-200);
+  background: none;
+  cursor: pointer;
+  font-size: var(--text-lg);
+  color: var(--color-gray-700);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+
+.navBtn:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  background: rgba(232, 93, 4, 0.05);
+}
+
+.dots {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: var(--color-gray-200);
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s, width 0.3s;
+}
+
+.dotActive {
+  background: var(--color-primary);
+  width: 24px;
+  border-radius: var(--radius-full);
+}
+
+/* ===== THUMBNAIL GRID ===== */
+.thumbnailGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.875rem;
+}
+
+@media (max-width: 900px) {
+  .thumbnailGrid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .thumbnailGrid { grid-template-columns: repeat(2, 1fr); }
+}
+
+.thumbCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 1rem 0.75rem;
+  border-radius: var(--radius-md);
+  border: 2px solid var(--color-gray-100);
+  background: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  text-align: center;
+}
+
+.thumbCard:hover {
+  border-color: var(--color-primary);
+  background: rgba(232, 93, 4, 0.04);
+}
+
+.thumbActive {
+  border-color: var(--color-primary);
+  background: rgba(232, 93, 4, 0.06);
+  box-shadow: var(--shadow-sm);
+}
+
+.thumbAvatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-serif);
+  font-size: var(--text-base);
+  font-weight: 700;
+  color: white;
+  flex-shrink: 0;
+}
+
+.thumbInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.thumbName {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--color-dark);
+  line-height: 1.3;
+}
+
+.thumbProgram {
+  font-size: 0.6875rem;
+  color: var(--color-gray-600);
+  line-height: 1.3;
+}
+
+@media (max-width: 768px) {
+  .testimonials { padding: var(--space-16) 0; }
+}

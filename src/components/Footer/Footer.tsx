@@ -9,7 +9,9 @@ const navLinks = [
   { href: "#beranda", label: "Beranda" },
   { href: "#profil", label: "Profil" },
   { href: "#program", label: "Program" },
-  { href: "#statistik", label: "Statistik" },
+  { href: "#tim", label: "Tim" },
+  { href: "#testimoni", label: "Testimoni" },
+  { href: "#kegiatan", label: "Kegiatan" },
   { href: "#artikel", label: "Fawaid" },
   { href: "#daftar", label: "Daftar" },
   { href: "#kontak", label: "Kontak" },
@@ -86,7 +88,6 @@ export default function Footer() {
               </ul>
             </div>
 
-            {/* Programs */}
             <div className={styles.footerSection}>
               <h5 className={styles.footerHeading}>Program</h5>
               <div className={styles.programBadges}>
@@ -99,11 +100,13 @@ export default function Footer() {
               </div>
               <ul className={styles.footerLinks} style={{ marginTop: "0.75rem" }}>
                 {[
-                  "Kejar Paket A (SD)",
-                  "Kejar Paket B (SMP)",
-                  "Kejar Paket C (SMA)",
-                  "Kursus Menjahit",
-                  "Kursus Komputer",
+                  "Paket A (Setara SD)",
+                  "Paket B (Setara SMP)",
+                  "Paket C (Setara SMA)",
+                  "Komputer Office",
+                  "Desain Grafis",
+                  "Tata Boga & Hantaran",
+                  "Bimbel SD & SMP",
                 ].map((p) => (
                   <li key={p}>
                     <button className={styles.footerLink} onClick={() => scrollToSection("#program")}>

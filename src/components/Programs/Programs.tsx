@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { FiBookOpen, FiAward, FiArrowRight, FiCheck, FiMessageCircle, FiChevronDown, FiChevronUp } from "react-icons/fi";
+import { FiBookOpen, FiAward, FiUsers, FiArrowRight, FiCheck, FiMessageCircle, FiChevronDown, FiChevronUp } from "react-icons/fi";
 import { PROGRAMS, SITE } from "@/data/siteData";
 import styles from "./Programs.module.css";
 
@@ -18,7 +18,7 @@ export default function Programs() {
 
   const openWhatsApp = (programName: string) => {
     const msg = encodeURIComponent(
-      `Assalamu'alaikum, saya ingin mendapatkan informasi lebih lanjut tentang program *${programName}* di Pusdiklat ISALAM. Mohon bantuannya. Terima kasih.`
+      `Assalamu'alaikum, saya ingin mendapatkan informasi lebih lanjut tentang program *${programName}* di PKBM & LKP I-SALAM. Mohon bantuannya. Terima kasih.`
     );
     window.open(`https://wa.me/${SITE.whatsappNumber}?text=${msg}`, "_blank");
   };
@@ -27,7 +27,7 @@ export default function Programs() {
     setExpandedId(expandedId === id ? null : id);
   };
 
-  const icons = [FiBookOpen, FiAward];
+  const icons = [FiBookOpen, FiAward, FiUsers];
 
   return (
     <section id="program" className={styles.programs} ref={ref}>
@@ -42,11 +42,11 @@ export default function Programs() {
           transition={{ duration: 0.7 }}
         >
           <span className="section-label light">Program Kami</span>
-          <h2 className="section-title light">Dua Program Unggulan</h2>
+          <h2 className="section-title light">Tiga Layanan Unggulan</h2>
           <div className="gold-divider" />
           <p className="section-subtitle light">
-            Dua program yang saling melengkapi — pendidikan kesetaraan dan keterampilan vokasional
-            — dirancang untuk memberdayakan setiap lapisan masyarakat.
+            PKBM, LKP Vokasi, dan Bimbel — tiga program yang saling melengkapi untuk
+            memberdayakan setiap lapisan masyarakat melalui pendidikan berkualitas.
           </p>
         </motion.div>
 

@@ -12,7 +12,9 @@ const navLinks = [
   { href: "#beranda", label: "Beranda" },
   { href: "#profil", label: "Profil" },
   { href: "#program", label: "Program" },
-  { href: "#statistik", label: "Statistik" },
+  { href: "#tim", label: "Tim" },
+  { href: "#testimoni", label: "Testimoni" },
+  { href: "#kegiatan", label: "Kegiatan" },
   { href: "#artikel", label: "Fawaid" },
   { href: "#kontak", label: "Kontak" },
 ];

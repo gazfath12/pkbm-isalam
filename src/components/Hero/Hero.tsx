@@ -79,8 +79,8 @@ export default function Hero() {
 
           <motion.p variants={item} className={styles.subtitle}>
             Pusat pengembangan SDM yang unggul, profesional, dan berakhlak mulia. Hadir melalui{" "}
-            <strong>PKBM Inisiator Salam Kariim</strong> dan <strong>LKP ISALAM</strong> untuk
-            memberdayakan seluruh lapisan masyarakat.
+            <strong>PKBM I-SALAM</strong>, <strong>LKP I-SALAM</strong>, dan{" "}
+            <strong>Bimbel I-SALAM</strong> untuk memberdayakan seluruh lapisan masyarakat.
           </motion.p>
 
           <motion.div variants={item} className={styles.actions}>
@@ -105,8 +105,8 @@ export default function Hero() {
           <motion.div variants={item} className={styles.quickStats}>
             {[
               { value: "500+", label: "Warga Belajar" },
-              { value: "10+", label: "Tahun Beroperasi" },
-              { value: "2", label: "Program Unggulan" },
+              { value: "2021", label: "Tahun Berdiri" },
+              { value: "3", label: "Layanan Utama" },
               { value: "98%", label: "Lulus Ujian" },
             ].map((stat) => (
               <div key={stat.label} className={styles.statItem}>
@@ -128,8 +128,8 @@ export default function Hero() {
           <div className={`${styles.floatingCard} ${styles.card1} animate-float`}>
             <FiBookOpen size={22} style={{ color: "var(--color-accent)" }} />
             <div>
-              <strong>PKBM Inisiator Salam Kariim</strong>
-              <p>Pendidikan Kesetaraan</p>
+              <strong>PKBM I-SALAM</strong>
+              <p>Pendidikan Kesetaraan · Akreditasi B</p>
             </div>
           </div>
           <div
@@ -138,8 +138,8 @@ export default function Hero() {
           >
             <FiAward size={22} style={{ color: "var(--color-accent-light)" }} />
             <div>
-              <strong>LKP ISALAM</strong>
-              <p>Kursus & Pelatihan</p>
+              <strong>LKP I-SALAM</strong>
+              <p>Vokasi & Keterampilan</p>
             </div>
           </div>
 
