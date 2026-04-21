@@ -15,8 +15,8 @@ export default async function MaterialsAdminPage() {
     <div>
       <div className={styles.pageHeader}>
         <div>
-          <Link href="/admin/dashboard" className={styles.backLink}>
-            <FiArrowLeft /> Kembali ke Dashboard
+          <Link href="/admin/dashboard" className={styles.backBtn} style={{ marginBottom: "1rem" }}>
+            <FiArrowLeft size={18} /> Kembali ke Dashboard
           </Link>
           <h2 className={styles.pageTitle} style={{ marginTop: "1rem" }}>Materi Promosi</h2>
           <p className={styles.pageSubtitle}>Kelola brosur, poster, dan flyer untuk diunduh pengunjung.</p>
@@ -60,7 +60,12 @@ export default async function MaterialsAdminPage() {
                     </td>
                     <td>{m.category}</td>
                     <td>
-                      <a href={m.fileUrl} target="_blank" rel="noreferrer" className={styles.fileLink}>
+                      <a 
+                        href={m.fileUrl} 
+                        target="_blank" 
+                        rel="noreferrer" 
+                        style={{ display: "inline-flex", alignItems: "center", gap: "0.25rem", color: "var(--color-primary)", fontWeight: "500", textDecoration: "none" }}
+                      >
                         <FiLink size={14} /> Lihat File
                       </a>
                     </td>

@@ -30,7 +30,7 @@ export default async function AdminLayout({ children }: { children: ReactNode })
             height={32} 
             style={{ objectFit: "contain" }}
           />
-          ISALAM <span>Admin</span>
+          I-SALAM <span>Admin</span>
         </div>
         <nav className={styles.navLinks}>
           <a href="/admin/dashboard" className={styles.navLink}>Artikel</a>

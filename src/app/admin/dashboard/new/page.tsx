@@ -7,5 +7,9 @@ export const metadata = {
 
 export default async function NewArticlePage() {
   await checkAuth();
-  return <ArticleForm />;
+  return (
+    <div style={{ maxWidth: "800px", margin: "0 auto" }}>
+      <ArticleForm />
+    </div>
+  );
 }

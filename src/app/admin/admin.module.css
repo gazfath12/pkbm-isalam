@@ -221,16 +221,18 @@
 }
 
 .header {
-  background-color: #ffffff;
-  border-bottom: 1px solid #e4e4e7;
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(228, 228, 231, 0.8);
   padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: sticky;
   top: 0;
-  z-index: 10;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+  z-index: 50;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.03);
 }
 
 .headerTitle {
@@ -248,20 +250,39 @@
 
 .navLinks {
   display: flex;
-  gap: 1.5rem;
+  gap: 1rem;
   align-items: center;
 }
 
-.publicLink {
+.navLink {
   color: #52525b;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.875rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+  background: transparent;
+}
+
+.navLink:hover {
+  color: var(--color-primary);
+  background: rgba(232, 93, 4, 0.08);
+}
+
+.publicLink {
+  color: #71717a;
   text-decoration: none;
   font-weight: 500;
   font-size: 0.875rem;
   transition: color 0.2s;
+  padding: 0.5rem 1rem;
+  border-left: 1px solid #e4e4e7;
+  margin-left: 0.5rem;
 }
 
 .publicLink:hover {
-  color: var(--color-accent);
+  color: var(--color-primary);
 }
 
 .logoutBtn {
@@ -485,6 +506,12 @@
   gap: 1.5rem;
 }
 
+.grid2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
 .formColFull {
   grid-column: 1 / -1;
 }
@@ -626,8 +653,15 @@
   .navLinks {
     width: 100%;
     justify-content: center;
-    gap: 1rem;
+    gap: 0.5rem;
     flex-wrap: wrap;
+  }
+  
+  .publicLink {
+    border-left: none;
+    margin-left: 0;
+    width: 100%;
+    text-align: center;
   }
 
   .pageHeader {
@@ -641,7 +675,7 @@
     justify-content: center;
   }
 
-  .formGrid {
+  .formGrid, .grid2 {
     grid-template-columns: 1fr;
   }
 

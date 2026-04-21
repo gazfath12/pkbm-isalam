@@ -17,5 +17,9 @@ export default async function EditArticlePage({ params }: { params: Promise<{ id
     notFound();
   }
 
-  return <ArticleForm article={article} />;
+  return (
+    <div style={{ maxWidth: "800px", margin: "0 auto" }}>
+      <ArticleForm article={article} />
+    </div>
+  );
 }
