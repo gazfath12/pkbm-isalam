@@ -17,7 +17,7 @@ import styles from "./Contact.module.css";
 const contacts = [
   {
     id: "contact-wa",
-    icon: () => <FaWhatsapp size={24} style={{ color: "var(--color-whatsapp)" }} />,
+    icon: FaWhatsapp,
     label: "WhatsApp",
     value: `+${CONTACT.whatsapp}`,
     sub: "Respon cepat via chat",
@@ -98,7 +98,10 @@ export default function Contact() {
                 className={styles.contactIcon}
                 style={{ background: `${c.color}1a`, color: c.color }}
               >
-                {typeof c.icon === "function" ? <c.icon /> : <c.icon size={24} />}
+                {(() => {
+                  const Icon = c.icon;
+                  return <Icon size={24} />;
+                })()}
               </div>
               <div>
                 <span className={styles.contactLabel}>{c.label}</span>
