@@ -12,6 +12,7 @@ const navLinks = [
   { href: "#beranda", label: "Beranda" },
   { href: "#profil", label: "Profil" },
   { href: "#program", label: "Program" },
+  { href: "#galeri", label: "Galeri" },
   { href: "#tim", label: "Tim" },
   { href: "#testimoni", label: "Testimoni" },
   { href: "#kegiatan", label: "Kegiatan" },

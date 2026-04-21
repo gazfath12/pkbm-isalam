@@ -5,6 +5,7 @@ import Programs from "@/components/Programs/Programs";
 import Stats from "@/components/Stats/Stats";
 import Team from "@/components/Team/Team";
 import Multimedia from "@/components/Multimedia/Multimedia";
+import Gallery from "@/components/Gallery/Gallery";
 import Testimonials from "@/components/Testimonials/Testimonials";
 import Events from "@/components/Events/Events";
 import Downloads from "@/components/Downloads/Downloads";
@@ -53,6 +54,7 @@ export default async function Home() {
       <Team />
       <Testimonials />
       <Multimedia />
+      <Gallery />
       <Events />
       <Downloads materials={dbMaterials} />
       {mappedArticles.length > 0 && <Articles articles={mappedArticles} />}
