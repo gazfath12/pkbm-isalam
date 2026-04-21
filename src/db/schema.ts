@@ -12,3 +12,13 @@ export const articles = pgTable("articles", {
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
 });
+export const materials = pgTable("materials", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  title: text("title").notNull(),
+  description: text("description"),
+  type: text("type").notNull(), // Brosur, Poster, Flyer
+  fileUrl: text("file_url").notNull(),
+  imageUrl: text("image_url"),
+  category: text("category").notNull(), // Lembaga, Kegiatan, Program
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+});

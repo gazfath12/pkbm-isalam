@@ -3,7 +3,8 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { FiBookOpen, FiAward, FiUsers, FiArrowRight, FiCheck, FiMessageCircle, FiChevronDown, FiChevronUp } from "react-icons/fi";
+import { FiBookOpen, FiAward, FiUsers, FiArrowRight, FiCheck, FiChevronDown, FiChevronUp } from "react-icons/fi";
+import { FaWhatsapp } from "react-icons/fa";
 import { PROGRAMS, SITE } from "@/data/siteData";
 import styles from "./Programs.module.css";
 
@@ -158,7 +159,7 @@ export default function Programs() {
                       className={styles.cardWa}
                       onClick={() => openWhatsApp(program.name)}
                     >
-                      <FiMessageCircle size={16} />
+                      <FaWhatsapp size={20} style={{ color: "var(--color-whatsapp)" }} />
                       Tanya via WA
                     </button>
                   </div>

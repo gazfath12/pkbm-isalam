@@ -11,6 +11,10 @@
   --color-accent-light: #ffd60a;
   --color-accent-dark: #dc7c00;
 
+  /* Social Colors */
+  --color-whatsapp: #25d366;
+  --color-whatsapp-dark: #128c7e;
+
   /* Deep contrast for text on light bg */
   --color-dark: #1a0800;
   --color-dark-card: #2a1000;

@@ -12,9 +12,9 @@ import {
   FiShield,
   FiClock,
   FiAward,
-  FiMessageCircle,
   FiMapPin,
 } from "react-icons/fi";
+import { FaWhatsapp } from "react-icons/fa";
 import { REGISTRATION_PROGRAMS, SITE } from "@/data/siteData";
 import styles from "./Registration.module.css";
 
@@ -69,7 +69,7 @@ export default function Registration() {
 
     // Build WhatsApp message
     const waMessage = [
-      `*PENDAFTARAN PUSDIKLAT ISALAM*`,
+      `*PENDAFTARAN PKBM & LKP I-SALAM*`,
       ``,
       `Assalamu'alaikum, saya ingin mendaftar program berikut:`,
       ``,
@@ -139,7 +139,7 @@ export default function Registration() {
                 </div>
                 <div className={styles.benefitItem}>
                   <div className={styles.benefitIcon}>
-                    <FiMessageCircle />
+                    <FaWhatsapp size={20} style={{ color: "var(--color-whatsapp)" }} />
                   </div>
                   <span>Respons cepat via WhatsApp</span>
                 </div>
@@ -162,13 +162,13 @@ export default function Registration() {
 
               {/* WhatsApp direct button */}
               <a
-                href={`https://wa.me/${SITE.whatsappNumber}?text=${encodeURIComponent("Assalamu'alaikum, saya ingin tanya informasi program di Pusdiklat ISALAM.")}`}
+                href={`https://wa.me/${SITE.whatsappNumber}?text=${encodeURIComponent("Assalamu'alaikum, saya ingin tanya informasi program di PKBM & LKP I-SALAM.")}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.directWaBtn}
                 id="direct-wa-btn"
               >
-                <FiMessageCircle size={20} />
+                <FaWhatsapp size={22} style={{ color: "white" }} />
                 Chat WhatsApp Langsung
               </a>
             </div>
@@ -185,7 +185,7 @@ export default function Registration() {
               <form className={styles.form} onSubmit={handleSubmit} noValidate>
                 <div className={styles.formHeader}>
                   <div className={styles.waIndicator}>
-                    <FiMessageCircle size={18} />
+                    <FaWhatsapp size={18} style={{ color: "var(--color-whatsapp)" }} />
                     <span>Data dikirim via WhatsApp</span>
                   </div>
                   <h3 className={styles.formTitle}>Formulir Pendaftaran</h3>
@@ -297,7 +297,7 @@ export default function Registration() {
                     </span>
                   ) : (
                     <>
-                      <FiSend size={18} />
+                      <FaWhatsapp size={18} />
                       Kirim via WhatsApp
                     </>
                   )}

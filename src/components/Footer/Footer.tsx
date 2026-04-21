@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import styles from "./Footer.module.css";
-import { FiHeart, FiMessageCircle, FiInstagram, FiFacebook, FiMapPin } from "react-icons/fi";
+import { FiHeart, FiInstagram, FiFacebook, FiMapPin } from "react-icons/fi";
+import { FaWhatsapp } from "react-icons/fa";
 import { SITE, CONTACT, PROGRAMS } from "@/data/siteData";
 
 const navLinks = [
@@ -56,7 +57,7 @@ export default function Footer() {
                   className={styles.footerWa}
                   id="footer-wa-btn"
                 >
-                  <FiMessageCircle size={16} />
+                  <FaWhatsapp size={16} style={{ color: "var(--color-whatsapp)" }} />
                   WhatsApp
                 </a>
                 <a

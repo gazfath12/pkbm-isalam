@@ -6,18 +6,18 @@ import {
   FiMail,
   FiMapPin,
   FiClock,
-  FiMessageCircle,
   FiInstagram,
   FiFacebook,
   FiYoutube,
 } from "react-icons/fi";
+import { FaWhatsapp } from "react-icons/fa";
 import { CONTACT, SITE } from "@/data/siteData";
 import styles from "./Contact.module.css";
 
 const contacts = [
   {
     id: "contact-wa",
-    icon: FiMessageCircle,
+    icon: () => <FaWhatsapp size={24} style={{ color: "var(--color-whatsapp)" }} />,
     label: "WhatsApp",
     value: `+${CONTACT.whatsapp}`,
     sub: "Respon cepat via chat",
@@ -47,7 +47,7 @@ const contacts = [
     icon: FiMapPin,
     label: "Alamat",
     value: CONTACT.address,
-    sub: "PKBM Inisiator Salam Kariim & LKP ISALAM",
+    sub: "PKBM & LKP I-SALAM",
     action: `https://www.google.com/maps/search/${encodeURIComponent(CONTACT.address)}`,
     color: "#fc5c7d",
   },
@@ -98,7 +98,7 @@ export default function Contact() {
                 className={styles.contactIcon}
                 style={{ background: `${c.color}1a`, color: c.color }}
               >
-                <c.icon size={24} />
+                {typeof c.icon === "function" ? <c.icon /> : <c.icon size={24} />}
               </div>
               <div>
                 <span className={styles.contactLabel}>{c.label}</span>
