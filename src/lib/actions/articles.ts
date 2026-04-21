@@ -34,21 +34,41 @@ async function saveImageLocally(file: File): Promise<string | null> {
 }
 
 export async function getArticles() {
-  return await db.select().from(articles).orderBy(desc(articles.createdAt));
+  try {
+    return await db.select().from(articles).orderBy(desc(articles.createdAt));
+  } catch (error) {
+    console.error("Database error in getArticles:", error);
+    return [];
+  }
 }
 
 export async function getArticleById(id: string) {
-  const result = await db.select().from(articles).where(eq(articles.id, id));
-  return result[0];
+  try {
+    const result = await db.select().from(articles).where(eq(articles.id, id));
+    return result[0];
+  } catch (error) {
+    console.error("Database error in getArticleById:", error);
+    return null;
+  }
 }
 
 export async function getArticleBySlug(slug: string) {
-  const result = await db.select().from(articles).where(eq(articles.slug, slug));
-  return result[0];
+  try {
+    const result = await db.select().from(articles).where(eq(articles.slug, slug));
+    return result[0];
+  } catch (error) {
+    console.error("Database error in getArticleBySlug:", error);
+    return null;
+  }
 }
 
 export async function getPublishedArticles() {
-  return await db.select().from(articles).where(eq(articles.published, true)).orderBy(desc(articles.createdAt));
+  try {
+    return await db.select().from(articles).where(eq(articles.published, true)).orderBy(desc(articles.createdAt));
+  } catch (error) {
+    console.error("Database error in getPublishedArticles:", error);
+    return [];
+  }
 }
 
 export async function createArticle(prevState: any, formData: FormData) {
@@ -121,7 +141,11 @@ export async function updateArticle(id: string, prevState: any, formData: FormDa
 
 export async function deleteArticle(id: string) {
   await checkAuth();
-  await db.delete(articles).where(eq(articles.id, id));
+  try {
+    await db.delete(articles).where(eq(articles.id, id));
+  } catch (error) {
+    console.error("Database error in deleteArticle:", error);
+  }
   revalidatePath("/");
   revalidatePath("/admin/dashboard");
 }

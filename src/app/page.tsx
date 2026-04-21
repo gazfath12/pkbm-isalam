@@ -14,6 +14,8 @@ import Contact from "@/components/Contact/Contact";
 import Footer from "@/components/Footer/Footer";
 import { getPublishedArticles } from "@/lib/actions/articles";
 
+export const dynamic = "force-dynamic";
+
 export default async function Home() {
   const dbArticles = await getPublishedArticles();
 

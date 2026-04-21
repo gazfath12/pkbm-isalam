@@ -10,6 +10,8 @@ export const metadata = {
   description: "Berita, kegiatan, pelatihan, dan informasi terbaru seputar PKBM Inisiator Salam Kariim & LKP ISALAM.",
 };
 
+export const dynamic = "force-dynamic";
+
 export default async function ArticlesPage() {
   const articles = await getPublishedArticles();
 
