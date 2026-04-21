@@ -402,10 +402,10 @@ export const EVENTS = [
 
 // ===== GALERI KEGIATAN =====
 export const ACTIVITIES = {
-  students: [11, 3, 1, 12, 18, 15, 4, 14, 5, 20].map((num, i) => ({
-    src: `/assets/activities/kegiatan-${num}.jpg`,
-    alt: `Kegiatan Warga Belajar I-SALAM ${num}`,
-    caption: `Kegiatan PKBM (${i + 1})`,
+  students: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => ({
+    src: `/assets/activities/gambar-${num}.png`,
+    alt: `Dokumentasi Kegiatan I-SALAM ${num}`,
+    caption: `Kegiatan PKBM & LKP (${num})`,
     category: "Kegiatan Belajar",
   })),
   staff: [16, 17, 18, 19, 20, 21, 22].map((num) => ({
