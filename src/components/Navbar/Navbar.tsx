@@ -5,6 +5,7 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiMenu, FiX, FiChevronRight } from "react-icons/fi";
 import { SITE } from "@/data/siteData";
+import { usePathname, useRouter } from "next/navigation";
 import styles from "./Navbar.module.css";
 
 const navLinks = [
@@ -19,6 +20,8 @@ const navLinks = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const pathname = usePathname();
+  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 60);
@@ -29,6 +32,11 @@ export default function Navbar() {
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     setMobileOpen(false);
+    
+    if (pathname !== "/" && href.startsWith("#")) {
+      router.push(`/${href}`);
+      return;
+    }
     
     // Add a slight delay to allow the mobile menu to close before calculating position
     setTimeout(() => {
@@ -49,7 +57,7 @@ export default function Navbar() {
     >
       <div className={styles.inner}>
         {/* Logo */}
-        <a href="#beranda" className={styles.logo} onClick={(e) => handleNavClick(e, "#beranda")}>
+        <a href={pathname !== "/" ? "/#beranda" : "#beranda"} className={styles.logo} onClick={(e) => handleNavClick(e, "#beranda")}>
           <div className={styles.logoImgWrap}>
             <Image
               src="/assets/logo_transparent.png"
@@ -71,7 +79,7 @@ export default function Navbar() {
           {navLinks.map((link) => (
             <a
               key={link.href}
-              href={link.href}
+              href={pathname !== "/" && link.href.startsWith("#") ? `/${link.href}` : link.href}
               className={styles.navLink}
               onClick={(e) => handleNavClick(e, link.href)}
             >
@@ -82,7 +90,7 @@ export default function Navbar() {
 
         {/* CTA */}
         <a
-          href="#daftar"
+          href={pathname !== "/" ? "/#daftar" : "#daftar"}
           className={`btn btn-primary ${styles.ctaBtn}`}
           onClick={(e) => handleNavClick(e, "#daftar")}
         >
@@ -114,7 +122,7 @@ export default function Navbar() {
             {navLinks.map((link, i) => (
               <motion.a
                 key={link.href}
-                href={link.href}
+                href={pathname !== "/" && link.href.startsWith("#") ? `/${link.href}` : link.href}
                 className={styles.mobileNavLink}
                 onClick={(e) => handleNavClick(e, link.href)}
                 initial={{ opacity: 0, x: -20 }}
@@ -125,7 +133,7 @@ export default function Navbar() {
               </motion.a>
             ))}
             <a
-              href="#daftar"
+              href={pathname !== "/" ? "/#daftar" : "#daftar"}
               className={`btn btn-primary ${styles.mobileCta}`}
               onClick={(e) => handleNavClick(e, "#daftar")}
             >

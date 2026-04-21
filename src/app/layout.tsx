@@ -2,13 +2,17 @@ import type { Metadata } from "next";
 import Preloader from "@/components/Preloader/Preloader";
 import "./globals.css";
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
+
 export const metadata: Metadata = {
   title: "Pusdiklat ISALAM — PKBM Inisiator Salam Kariim & LKP ISALAM",
   description:
     "Pusdiklat ISALAM menghadirkan PKBM Inisiator Salam Kariim & LKP ISALAM di Colomadu, Karanganyar. Layanan pendidikan Kejar Paket A/B/C, kursus menjahit, komputer, dan pelatihan keterampilan vokasional berbasis nilai keislaman.",
   keywords: "Pusdiklat ISALAM, PKBM Inisiator Salam Kariim, LKP ISALAM, Kejar Paket A, Kejar Paket B, Kejar Paket C, Kursus Menjahit Karanganyar, Kursus Komputer Colomadu, Pendidikan Kesetaraan, Pelatihan Kerja, Karanganyar, Jawa Tengah",
   authors: [{ name: "Pusdiklat ISALAM" }],
-  viewport: "width=device-width, initial-scale=1",
   robots: "index, follow",
   openGraph: {
     title: "Pusdiklat ISALAM — Pendidikan Kesetaraan & Pelatihan Keterampilan",
