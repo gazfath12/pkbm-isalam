@@ -177,9 +177,10 @@ h1, h2, h3, h4 {
 }
 
 .section-title {
-  font-size: clamp(var(--text-3xl), 4vw, var(--text-5xl));
+  font-size: clamp(var(--text-2xl), 5vw, var(--text-5xl));
   color: var(--color-dark);
   margin-bottom: var(--space-4);
+  letter-spacing: -0.02em;
 }
 
 .section-title.light {
@@ -188,11 +189,11 @@ h1, h2, h3, h4 {
 
 .section-subtitle {
   font-family: var(--font-sans);
-  font-size: var(--text-lg);
+  font-size: 1.05rem;
   color: var(--color-gray-600);
-  max-width: 600px;
+  max-width: 650px;
   margin: 0 auto;
-  line-height: 1.7;
+  line-height: 1.6;
 }
 
 .section-subtitle.light {
@@ -214,9 +215,9 @@ h1, h2, h3, h4 {
   align-items: center;
   justify-content: center;
   gap: var(--space-2);
-  padding: var(--space-3) var(--space-8);
+  padding: 0.75rem 1.75rem;
   font-family: var(--font-sans);
-  font-size: var(--text-base);
+  font-size: 0.95rem;
   font-weight: 600;
   border-radius: var(--radius-full);
   cursor: pointer;
@@ -326,5 +327,8 @@ h1, h2, h3, h4 {
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
   .container, .container-wide { padding: 0 var(--space-4); }
-  .section { padding: var(--space-16) 0; }
+  .section { padding: var(--space-12) 0; }
+  .btn { padding: 0.65rem 1.5rem; font-size: 0.875rem; }
+  .section-header { margin-bottom: var(--space-10); }
+  .section-subtitle { font-size: 0.95rem; }
 }

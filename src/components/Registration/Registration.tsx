@@ -243,12 +243,12 @@ export default function Registration() {
                       <option value="">— Pilih Program —</option>
                       <optgroup label="PKBM Inisiator Salam Kariim">
                         {REGISTRATION_PROGRAMS.filter((p) => p.startsWith("PKBM")).map((p) => (
-                          <option key={p} value={p}>{p.replace("PKBM Inisiator Salam Kariim - ", "")}</option>
+                          <option key={p} value={p}>{p.replace("PKBM Inisiator Salam Kariim – ", "")}</option>
                         ))}
                       </optgroup>
-                      <optgroup label="LKP ISALAM">
+                      <optgroup label="LKP I-SALAM">
                         {REGISTRATION_PROGRAMS.filter((p) => p.startsWith("LKP")).map((p) => (
-                          <option key={p} value={p}>{p.replace("LKP ISALAM - ", "")}</option>
+                          <option key={p} value={p}>{p.replace("LKP I-SALAM – ", "")}</option>
                         ))}
                       </optgroup>
                     </select>

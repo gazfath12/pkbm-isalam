@@ -66,7 +66,7 @@ export default function Hero() {
         >
           <motion.div variants={item} className={styles.badge}>
             <FiAward className={styles.badgeIcon} />
-            Terakreditasi B — Resmi & Terpercaya
+            Akreditasi BAN-PDM — Resmi & Terpercaya
           </motion.div>
 
           <motion.h1 variants={item} className={styles.title}>
@@ -79,7 +79,7 @@ export default function Hero() {
 
           <motion.p variants={item} className={styles.subtitle}>
             Pusat pengembangan SDM yang unggul, profesional, dan berakhlak mulia. Hadir melalui{" "}
-            <strong>PKBM I-SALAM</strong>, <strong>LKP I-SALAM</strong>, dan{" "}
+            <strong>PKBM Inisiator Salam Kariim</strong>, <strong>LKP I-SALAM</strong>, dan{" "}
             <strong>Bimbel I-SALAM</strong> untuk memberdayakan seluruh lapisan masyarakat.
           </motion.p>
 
@@ -128,8 +128,8 @@ export default function Hero() {
           <div className={`${styles.floatingCard} ${styles.card1} animate-float`}>
             <FiBookOpen size={22} style={{ color: "var(--color-accent)" }} />
             <div>
-              <strong>PKBM I-SALAM</strong>
-              <p>Pendidikan Kesetaraan · Akreditasi B</p>
+              <strong>PKBM Inisiator Salam Kariim</strong>
+              <p>Pendidikan Kesetaraan · Akreditasi BAN-PDM</p>
             </div>
           </div>
           <div

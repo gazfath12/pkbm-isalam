@@ -61,10 +61,10 @@
 
 .logoTitle {
   font-family: var(--font-serif);
-  font-size: var(--text-xl);
+  font-size: 1.15rem;
   font-weight: 700;
   color: var(--color-accent);
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
 }
 
 .logoSub {
@@ -115,10 +115,18 @@
 
 /* CTA Button */
 .ctaBtn {
-  font-size: var(--text-base) !important;
-  padding: var(--space-3) var(--space-6) !important;
+  font-size: 0.85rem !important;
+  font-weight: 600 !important;
+  padding: 0.6rem 1.2rem !important;
   flex-shrink: 0;
   white-space: nowrap;
+  border-radius: 50px !important;
+  box-shadow: 0 4px 15px rgba(232, 93, 4, 0.2);
+}
+
+.ctaBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(232, 93, 4, 0.3);
 }
 
 /* Hamburger */
@@ -173,8 +181,23 @@
   justify-content: center;
 }
 
+@media (max-width: 1024px) {
+  .inner {
+    gap: var(--space-4);
+  }
+  .desktopNav { gap: 0; }
+  .navLink { font-size: 0.8rem; padding: var(--space-2); }
+}
+
 @media (max-width: 900px) {
   .desktopNav { display: none; }
   .ctaBtn { display: none; }
   .hamburger { display: flex; }
+}
+
+@media (max-width: 480px) {
+  .logoImgWrap { width: 40px; height: 40px; }
+  .logoImg { width: 40px; height: 40px; }
+  .logoTitle { font-size: 1rem; }
+  .logoSub { font-size: 0.55rem; }
 }

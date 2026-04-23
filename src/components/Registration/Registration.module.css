@@ -167,16 +167,16 @@
   color: var(--color-white);
   border: none;
   border-radius: var(--radius-full);
-  padding: var(--space-4) var(--space-6);
+  padding: 0.85rem 1.5rem;
   font-family: var(--font-sans);
-  font-size: var(--text-base);
+  font-size: 0.95rem;
   font-weight: 600;
   cursor: pointer;
   text-decoration: none;
   transition: all var(--transition-base);
-  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.35);
-  width: 100%;
-  margin-top: var(--space-8);
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.25);
+  width: fit-content;
+  margin-top: var(--space-4);
 }
 
 .directWaBtn:hover {
@@ -374,12 +374,18 @@
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 900px) {
+  .grid { gap: var(--space-10); }
   .grid { grid-template-columns: 1fr; }
   .infoPanel { position: static; }
-  .formHeader, .form { padding-left: var(--space-6); padding-right: var(--space-6); }
+  .formHeader { padding: var(--space-6) var(--space-6) 0; }
+  .form { padding: var(--space-4) var(--space-6) var(--space-6); }
+  .infoTitle { font-size: var(--text-2xl); }
 }
 
 @media (max-width: 600px) {
   .benefitsGrid { grid-template-columns: 1fr; }
   .formRow { grid-template-columns: 1fr; }
+  .statsContainer { gap: var(--space-4); justify-content: space-between; }
+  .statNumber { font-size: var(--text-2xl); }
+  .directWaBtn { width: 100%; text-align: center; }
 }
