@@ -141,12 +141,13 @@
   transform: translateY(8px);
   transition: opacity 0.35s ease, transform 0.35s ease;
   border-radius: var(--radius-lg);
-  padding: 2rem;
+  padding: 2.5rem 1.5rem;
+  z-index: 10;
 }
 
 .memberCard:hover .cardOverlay,
 .memberCard.hovered .cardOverlay {
-  opacity: 0.95;
+  opacity: 1;
   transform: translateY(0);
 }
 
@@ -155,8 +156,9 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 0.875rem;
+  gap: 1.25rem;
   color: var(--color-white);
+  width: 100%;
 }
 
 .overlayIcon {
