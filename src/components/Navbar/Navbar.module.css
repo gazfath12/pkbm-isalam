@@ -39,8 +39,8 @@
 }
 
 .logoImgWrap {
-  width: 64px;
-  height: 64px;
+  width: 45px;
+  height: 45px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -48,11 +48,12 @@
 }
 
 .logoImg {
-  width: 64px;
-  height: 64px;
+  width: 45px;
+  height: 45px;
   object-fit: contain;
   /* Hack untuk menghilangkan background hitam pada logo */
-  mix-blend-mode: screen; 
+  mix-blend-mode: screen;
+  filter: brightness(1.1) contrast(1.1);
 }
 
 .logoTextWrap {
