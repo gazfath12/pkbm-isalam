@@ -51,6 +51,8 @@
   width: 64px;
   height: 64px;
   object-fit: contain;
+  /* Hack untuk menghilangkan background hitam pada logo */
+  mix-blend-mode: screen; 
 }
 
 .logoTextWrap {
@@ -116,10 +118,18 @@
 
 /* CTA Button */
 .ctaBtn {
-  font-size: var(--text-base) !important;
-  padding: var(--space-3) var(--space-6) !important;
+  font-size: 0.8rem !important;
+  font-weight: 600 !important;
+  padding: 0.5rem 1rem !important;
   flex-shrink: 0;
   white-space: nowrap;
+  border-radius: 50px !important;
+  box-shadow: 0 4px 12px rgba(232, 93, 4, 0.2);
+}
+
+.ctaBtn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 15px rgba(232, 93, 4, 0.3);
 }
 
 /* Hamburger */
@@ -174,8 +184,22 @@
   justify-content: center;
 }
 
+@media (max-width: 1024px) {
+  .inner { gap: var(--space-4); }
+  .desktopNav { gap: 0; }
+  .navLink { font-size: 0.8rem; padding: var(--space-2); }
+}
+
 @media (max-width: 900px) {
   .desktopNav { display: none; }
   .ctaBtn { display: none; }
   .hamburger { display: flex; }
+}
+
+@media (max-width: 480px) {
+  .inner { padding: 0 var(--space-4); }
+  .logoImgWrap { width: 45px; height: 45px; }
+  .logoImg { width: 45px; height: 45px; }
+  .logoTitle { font-size: 0.95rem; }
+  .logoSub { font-size: 0.5rem; letter-spacing: 0.02em; }
 }

@@ -153,9 +153,9 @@
 }
 
 .actions .btn {
-  padding: 1.5rem 4.5rem;
+  padding: 0.85rem 2rem;
   border-radius: var(--radius-full);
-  font-size: var(--text-xl);
+  font-size: 1.1rem;
   font-weight: 700;
   letter-spacing: 0.03em;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -381,8 +381,11 @@
 }
 
 @media (max-width: 600px) {
-  .title { font-size: 1.8rem; }
+  .title { font-size: 1.75rem; }
+  .badge { font-size: 0.75rem; padding: 0.5rem 1rem; }
+  .subtitle { font-size: 0.95rem; }
+  .actions .btn { width: 100%; padding: 0.75rem 2rem; font-size: 1rem; }
   .quickStats { grid-template-columns: repeat(2, 1fr); gap: var(--space-4); }
   .floatingCard { display: none; }
-  .content { padding-top: 5rem; }
+  .content { padding-top: 6rem; gap: var(--space-8); }
 }
