@@ -19,7 +19,7 @@ export const LEGAL = {
   pkbm: {
     npsn: "P9900108", // Update dengan data asli
     iziOperasional: "421.9/2856/2021",
-    akreditasi: "B",
+    akreditasi: "BAN-PDM",
     tahunBerdiri: "2021",
   },
   lkp: {
@@ -34,16 +34,16 @@ export const PROGRAMS = [
   {
     id: "pkbm",
     tag: "PKBM",
-    name: "PKBM I-SALAM",
+    name: "PKBM Inisiator Salam Kariim",
     fullName: "Pusat Kegiatan Belajar Masyarakat",
-    subtitle: "Pendidikan Kesetaraan · Terakreditasi B",
+    subtitle: "Pendidikan Kesetaraan · Akreditasi BAN-PDM",
     description:
-      "Program pendidikan nonformal berstandar negara yang memberikan layanan kesetaraan Paket A, B, dan C. Terakreditasi B oleh BAN-PNF dengan kurikulum adaptif berbasis nilai-nilai keislaman.",
+      "Program pendidikan nonformal berstandar negara yang memberikan layanan kesetaraan Paket A, B, dan C. Terakreditasi oleh BAN-PDM dengan kurikulum adaptif berbasis nilai-nilai keislaman.",
     features: [
       "Paket A – Setara SD",
       "Paket B – Setara SMP",
       "Paket C – Setara SMA",
-      "Akreditasi B – BAN-PNF",
+      "Akreditasi BAN-PDM",
       "Ijazah Diakui Negara",
       "Pembelajaran Fleksibel",
     ],
@@ -113,9 +113,9 @@ export const PROGRAMS = [
 
 // ===== REGISTRATION PROGRAMS =====
 export const REGISTRATION_PROGRAMS = [
-  "PKBM I-SALAM – Paket A (Setara SD)",
-  "PKBM I-SALAM – Paket B (Setara SMP)",
-  "PKBM I-SALAM – Paket C (Setara SMA)",
+  "PKBM Inisiator Salam Kariim – Paket A (Setara SD)",
+  "PKBM Inisiator Salam Kariim – Paket B (Setara SMP)",
+  "PKBM Inisiator Salam Kariim – Paket C (Setara SMA)",
   "LKP I-SALAM – Komputer Office",
   "LKP I-SALAM – Desain Grafis",
   "LKP I-SALAM – Tata Boga",
@@ -296,11 +296,11 @@ export const MULTIMEDIA_VIDEOS = [
   },
   {
     id: "testimoni",
-    title: "Pesan & Kesan Alumni",
-    description: "Dengarkan langsung pengalaman dan testimoni dari para alumni yang telah merasakan manfaatnya.",
+    title: "Penelusuran Alumni",
+    description: "Dengarkan langsung pesan, kesan, dan jejak langkah para alumni yang telah sukses meniti karir.",
     youtubeId: "YOUTUBE_ID_TESTIMONI", // Ganti dengan YouTube ID asli
     thumbnail: "/assets/video-thumb-testimoni.jpg",
-    category: "Testimoni",
+    category: "Alumni",
   },
 ];
 
@@ -413,6 +413,12 @@ export const ACTIVITIES = {
     alt: `Kegiatan Guru & Staf I-SALAM ${num}`,
     caption: `Kegiatan Lembaga (${num})`,
     category: "Staf & Karyawan",
+  })),
+  dinas: [1, 2, 3].map((num) => ({
+    src: `/assets/activities/dinas-${num}.jpg`,
+    alt: `Kegiatan Dinas & Pameran ${num}`,
+    caption: `Kegiatan Dinas (${num})`,
+    category: "Kegiatan Dinas",
   })),
 };
 
