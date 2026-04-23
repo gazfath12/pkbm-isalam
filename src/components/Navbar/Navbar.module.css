@@ -39,8 +39,8 @@
 }
 
 .logoImgWrap {
-  width: 52px;
-  height: 52px;
+  width: 64px;
+  height: 64px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -48,8 +48,8 @@
 }
 
 .logoImg {
-  width: 52px;
-  height: 52px;
+  width: 64px;
+  height: 64px;
   object-fit: contain;
 }
 
@@ -61,14 +61,14 @@
 
 .logoTitle {
   font-family: var(--font-serif);
-  font-size: var(--text-xl);
+  font-size: 1.25rem;
   font-weight: 700;
   color: var(--color-accent);
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
 }
 
 .logoSub {
-  font-size: 0.65rem;
+  font-size: 0.7rem;
   font-weight: 500;
   color: rgba(255, 255, 255, 0.65);
   letter-spacing: 0.08em;
