@@ -51,8 +51,6 @@
   width: 52px;
   height: 52px;
   object-fit: contain;
-  /* Filter untuk mencerahkan bagian gelap (teks Pusdiklat) di logo */
-  filter: drop-shadow(0px 0px 1px white) brightness(1.2);
 }
 
 .logoTextWrap {
@@ -63,10 +61,10 @@
 
 .logoTitle {
   font-family: var(--font-serif);
-  font-size: 1.15rem;
+  font-size: var(--text-xl);
   font-weight: 700;
-  color: #ffffff;
-  letter-spacing: 0.01em;
+  color: var(--color-accent);
+  letter-spacing: 0.02em;
 }
 
 .logoSub {
@@ -74,6 +72,7 @@
   font-weight: 500;
   color: rgba(255, 255, 255, 0.65);
   letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 /* Desktop Nav */
@@ -117,18 +116,10 @@
 
 /* CTA Button */
 .ctaBtn {
-  font-size: 0.85rem !important;
-  font-weight: 600 !important;
-  padding: 0.6rem 1.2rem !important;
+  font-size: var(--text-base) !important;
+  padding: var(--space-3) var(--space-6) !important;
   flex-shrink: 0;
   white-space: nowrap;
-  border-radius: 50px !important;
-  box-shadow: 0 4px 15px rgba(232, 93, 4, 0.2);
-}
-
-.ctaBtn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(232, 93, 4, 0.3);
 }
 
 /* Hamburger */
@@ -183,23 +174,8 @@
   justify-content: center;
 }
 
-@media (max-width: 1024px) {
-  .inner {
-    gap: var(--space-4);
-  }
-  .desktopNav { gap: 0; }
-  .navLink { font-size: 0.8rem; padding: var(--space-2); }
-}
-
 @media (max-width: 900px) {
   .desktopNav { display: none; }
   .ctaBtn { display: none; }
   .hamburger { display: flex; }
-}
-
-@media (max-width: 480px) {
-  .logoImgWrap { width: 40px; height: 40px; }
-  .logoImg { width: 40px; height: 40px; }
-  .logoTitle { font-size: 1rem; }
-  .logoSub { font-size: 0.55rem; }
 }

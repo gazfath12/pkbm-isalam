@@ -69,7 +69,7 @@ export default function Gallery() {
           <AnimatePresence mode="popLayout">
             {filteredImages.map((img, i) => (
               <motion.div
-                key={img.src}
+                key={`${img.catId}-${img.src}`}
                 layout
                 className={styles.imageCard}
                 onClick={() => setSelectedImage(img.src)}
