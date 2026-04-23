@@ -53,8 +53,10 @@
   height: 45px;
   object-fit: contain;
   /* Menghilangkan background hitam pada logo menggunakan screen blend mode */
+  /* Contrast ditingkatkan agar hitam benar-benar hilang */
   mix-blend-mode: screen;
-  filter: brightness(1.2) contrast(1.4);
+  filter: brightness(1.3) contrast(1.8);
+  background: transparent;
 }
 
 .logoTextWrap {

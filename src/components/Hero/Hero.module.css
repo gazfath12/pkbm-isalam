@@ -345,9 +345,10 @@
 .scrollIndicator {
   position: absolute;
   bottom: var(--space-8);
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 3;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  z-index: 10;
   background: rgba(250, 163, 7, 0.15);
   border: 1px solid rgba(250, 163, 7, 0.35);
   color: var(--color-accent-light);
