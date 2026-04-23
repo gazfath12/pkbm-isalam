@@ -40,7 +40,7 @@
   font-family: var(--font-serif);
   font-size: var(--text-xl);
   font-weight: 700;
-  color: #ffffff;
+  color: var(--color-accent);
 }
 
 .footerLogoSub {

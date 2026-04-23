@@ -716,8 +716,3 @@
     flex-direction: column;
   }
 }
-
-.logoImg {
-  filter: brightness(0) invert(1);
-  object-fit: contain;
-}

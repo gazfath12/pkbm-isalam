@@ -27,7 +27,6 @@
 
 .logo {
   object-fit: contain;
-  filter: brightness(0) invert(1); /* Forces logo to white */
   /* Add a subtle pulse to the logo itself */
   animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }

@@ -27,7 +27,7 @@ export default function AdminLogin() {
             alt="Pusdiklat ISALAM Logo" 
             width={70} 
             height={70} 
-            className={styles.logoImg}
+            style={{ objectFit: "contain" }}
           />
         </div>
 
