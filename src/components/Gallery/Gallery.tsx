@@ -7,16 +7,29 @@ import { useInView } from "react-intersection-observer";
 import { FiX, FiImage } from "react-icons/fi";
 import styles from "./Gallery.module.css";
 
-const GALLERY_IMAGES = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => ({
-  id: num,
-  src: `/assets/activities/gambar-${num}.png`,
-  alt: `Galeri Kegiatan I-SALAM ${num}`,
-  caption: `Kegiatan ${num}`,
-}));
+import { ACTIVITIES } from "@/data/siteData";
+
+const categories = [
+  { id: "all", label: "Semua" },
+  { id: "students", label: "Kegiatan Belajar" },
+  { id: "staff", label: "Staf & Karyawan" },
+  { id: "dinas", label: "Kegiatan Dinas" },
+];
 
 export default function Gallery() {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [activeFilter, setActiveFilter] = useState("all");
+
+  const allImages = [
+    ...ACTIVITIES.students.map(img => ({ ...img, catId: "students" })),
+    ...ACTIVITIES.staff.map(img => ({ ...img, catId: "staff" })),
+    ...ACTIVITIES.dinas.map(img => ({ ...img, catId: "dinas" })),
+  ];
+
+  const filteredImages = activeFilter === "all" 
+    ? allImages 
+    : allImages.filter(img => img.catId === activeFilter);
 
   return (
     <section id="galeri" className={styles.gallery} ref={ref}>
@@ -36,32 +49,54 @@ export default function Gallery() {
           </p>
         </motion.div>
 
-        <div className={styles.grid}>
-          {GALLERY_IMAGES.map((img, i) => (
-            <motion.div
-              key={img.id}
-              className={styles.imageCard}
-              onClick={() => setSelectedImage(img.src)}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={inView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ duration: 0.5, delay: i * 0.05 }}
+        {/* Filter Tabs */}
+        <div className={styles.filters}>
+          {categories.map((cat) => (
+            <button
+              key={cat.id}
+              className={`${styles.filterBtn} ${activeFilter === cat.id ? styles.activeBtn : ""}`}
+              onClick={() => setActiveFilter(cat.id)}
             >
-              <Image
-                src={img.src}
-                alt={img.alt}
-                fill
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                className={styles.image}
-              />
-              <div className={styles.overlay}>
-                <span className={styles.caption}>
-                  <FiImage style={{ marginRight: "8px", verticalAlign: "middle" }} />
-                  {img.caption}
-                </span>
-              </div>
-            </motion.div>
+              {cat.label}
+            </button>
           ))}
         </div>
+
+        <motion.div 
+          layout
+          className={styles.grid}
+        >
+          <AnimatePresence mode="popLayout">
+            {filteredImages.map((img, i) => (
+              <motion.div
+                key={img.src}
+                layout
+                className={styles.imageCard}
+                onClick={() => setSelectedImage(img.src)}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.8 }}
+                transition={{ duration: 0.4 }}
+              >
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  className={styles.image}
+                />
+                <div className={styles.overlay}>
+                  <div className={styles.captionWrap}>
+                    <span className={styles.catBadge}>{img.category}</span>
+                    <span className={styles.caption}>
+                      {img.caption}
+                    </span>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </motion.div>
       </div>
 
       <AnimatePresence>

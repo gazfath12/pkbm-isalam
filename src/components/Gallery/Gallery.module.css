@@ -1,15 +1,47 @@
 .gallery {
   padding: 6rem 0;
-  background-color: #f8fafc;
+  background-color: #1a0800; /* Darker to match theme */
   position: relative;
   overflow: hidden;
 }
 
+.filters {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2.5rem;
+  margin-bottom: 3.5rem;
+}
+
+.filterBtn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(250, 163, 7, 0.2);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 0.95rem;
+}
+
+.filterBtn:hover {
+  background: rgba(250, 163, 7, 0.1);
+  border-color: rgba(250, 163, 7, 0.5);
+}
+
+.activeBtn {
+  background: var(--color-accent) !important;
+  border-color: var(--color-accent) !important;
+  color: #1a0800 !important;
+  box-shadow: 0 4px 15px rgba(250, 163, 7, 0.3);
+}
+
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 1.5rem;
-  margin-top: 3rem;
 }
 
 .imageCard {
@@ -46,16 +78,33 @@
   opacity: 1;
 }
 
-.caption {
-  color: white;
-  font-weight: 600;
-  font-size: 1.1rem;
+.captionWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
   transform: translateY(10px);
   transition: transform 0.3s ease;
 }
 
-.imageCard:hover .caption {
+.imageCard:hover .captionWrap {
   transform: translateY(0);
+}
+
+.catBadge {
+  background: var(--color-accent);
+  color: #1a0800;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  text-transform: uppercase;
+  width: fit-content;
+}
+
+.caption {
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
 }
 
 /* Modal / Lightbox */
