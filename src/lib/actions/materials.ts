@@ -5,30 +5,11 @@ import { eq, desc } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { checkAuth } from "./auth";
-import fs from "fs/promises";
-import path from "path";
+import { uploadToCloudinary } from "@/lib/cloudinary";
 
-// Helper for local file upload
-async function saveFileLocally(file: File): Promise<string | null> {
-  if (!file || file.size === 0) return null;
-  
-  const bytes = await file.arrayBuffer();
-  const buffer = Buffer.from(bytes);
-
-  const uploadDir = path.join(process.cwd(), "public/uploads/materials");
-  try {
-    await fs.access(uploadDir);
-  } catch {
-    await fs.mkdir(uploadDir, { recursive: true });
-  }
-
-  const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1E9);
-  const ext = file.name.split(".").pop();
-  const filename = `${uniqueSuffix}.${ext}`;
-  const filepath = path.join(uploadDir, filename);
-
-  await fs.writeFile(filepath, buffer);
-  return `/uploads/materials/${filename}`;
+// Helper for Cloudinary upload
+async function saveToCloud(file: File): Promise<string | null> {
+  return await uploadToCloudinary(file, "materials");
 }
 
 export async function getMaterials() {
@@ -51,8 +32,8 @@ export async function createMaterial(prevState: any, formData: FormData) {
   const file = formData.get("file") as File;
   const image = formData.get("image") as File;
   
-  const fileUrl = await saveFileLocally(file);
-  const imageUrl = await saveFileLocally(image);
+  const fileUrl = await saveToCloud(file);
+  const imageUrl = await saveToCloud(image);
   
   if (!fileUrl) {
     return { error: "File wajib diupload." };

@@ -5,32 +5,11 @@ import { eq, desc } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { checkAuth } from "./auth";
-import fs from "fs/promises";
-import path from "path";
+import { uploadToCloudinary } from "@/lib/cloudinary";
 
-// Helper for local file upload
-async function saveImageLocally(file: File): Promise<string | null> {
-  if (!file || file.size === 0) return null;
-  
-  const bytes = await file.arrayBuffer();
-  const buffer = Buffer.from(bytes);
-
-  // Buat folder uploads jika belum ada
-  const uploadDir = path.join(process.cwd(), "public/uploads");
-  try {
-    await fs.access(uploadDir);
-  } catch {
-    await fs.mkdir(uploadDir, { recursive: true });
-  }
-
-  // Bikin nama file unik
-  const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1E9);
-  const ext = file.name.split(".").pop();
-  const filename = `${uniqueSuffix}.${ext}`;
-  const filepath = path.join(uploadDir, filename);
-
-  await fs.writeFile(filepath, buffer);
-  return `/uploads/${filename}`;
+// Helper for Cloudinary upload
+async function saveImageToCloud(file: File): Promise<string | null> {
+  return await uploadToCloudinary(file, "articles");
 }
 
 export async function getArticles() {
@@ -82,7 +61,7 @@ export async function createArticle(prevState: any, formData: FormData) {
   const published = formData.get("published") === "on";
   
   const imageFile = formData.get("image") as File;
-  const newImageUrl = await saveImageLocally(imageFile);
+  const newImageUrl = await saveImageToCloud(imageFile);
   
   try {
     await db.insert(articles).values({
@@ -116,7 +95,7 @@ export async function updateArticle(id: string, prevState: any, formData: FormDa
   const imageFile = formData.get("image") as File;
   const existingImageUrl = formData.get("existingImageUrl") as string;
   
-  const newImageUrl = await saveImageLocally(imageFile);
+  const newImageUrl = await saveImageToCloud(imageFile);
   const finalImageUrl = newImageUrl || (existingImageUrl !== "" ? existingImageUrl : null);
 
   try {

@@ -7,8 +7,8 @@ const WA_NUMBER = "6281391002505"; // <-- Ganti dengan nomor WA aktif
 // ===== SITE INFO =====
 export const SITE = {
   name: "PKBM & LKP I-SALAM",
-  shortName: "I-SALAM",
-  tagline: "Pusat Pendidikan dan Pelatihan",
+  shortName: "PUSDIKLAT I-SALAM",
+  tagline: "isalam",
   description:
     "PKBM & LKP I-SALAM adalah lembaga pendidikan nonformal dan pelatihan keterampilan yang berdedikasi menciptakan generasi kompeten, mandiri, dan berakhlak mulia.",
   whatsappNumber: WA_NUMBER,
