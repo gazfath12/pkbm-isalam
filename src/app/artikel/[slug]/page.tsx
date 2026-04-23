@@ -64,19 +64,14 @@ export default async function SingleArticlePage({ params }: Props) {
             </Link>
           </div>
 
-          <article style={{ 
-            backgroundColor: "white", 
-            borderRadius: "var(--radius-xl)", 
-            overflow: "hidden", 
-            boxShadow: "var(--shadow-lg)" 
-          }}>
+          <article className={styles.articleMain}>
             {/* Cover Image */}
             {article.imageUrl ? (
-              <div style={{ width: "100%", height: "400px", position: "relative" }}>
+              <div className={styles.articleImageWrap}>
                 <img 
                   src={article.imageUrl} 
                   alt={article.title} 
-                  style={{ width: "100%", height: "100%", objectFit: "cover" }} 
+                  className={styles.articleImage}
                 />
               </div>
             ) : (
@@ -84,8 +79,8 @@ export default async function SingleArticlePage({ params }: Props) {
             )}
 
             {/* Article Content */}
-            <div style={{ padding: "3rem 2rem", maxWidth: "800px", margin: "0 auto" }}>
-              <div style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "1.5rem", flexWrap: "wrap" }}>
+            <div className={styles.articleContent}>
+              <div className={styles.articleMeta}>
                 <span style={{ 
                   backgroundColor: "var(--color-gray-50)", 
                   color: "var(--color-primary)", 
@@ -105,23 +100,11 @@ export default async function SingleArticlePage({ params }: Props) {
                 </span>
               </div>
 
-              <h1 style={{ 
-                fontSize: "clamp(2rem, 4vw, 3rem)", 
-                fontFamily: "var(--font-serif)",
-                fontWeight: "700", 
-                color: "var(--color-dark)", 
-                marginBottom: "2rem",
-                lineHeight: "1.2"
-              }}>
+              <h1 className={styles.articleTitle}>
                 {article.title}
               </h1>
 
-              <div style={{ 
-                fontSize: "1.125rem", 
-                color: "var(--color-gray-700)", 
-                lineHeight: "1.8",
-                whiteSpace: "pre-wrap" // Allows newlines from textarea to render properly
-              }}>
+              <div className={styles.articleBody}>
                 {article.content}
               </div>
             </div>
@@ -130,7 +113,7 @@ export default async function SingleArticlePage({ params }: Props) {
           {/* Other Articles Section */}
           {otherArticles.length > 0 && (
             <div style={{ marginTop: "4rem" }}>
-              <h3 style={{ fontSize: "1.5rem", fontFamily: "var(--font-serif)", fontWeight: "700", marginBottom: "1.5rem", color: "var(--color-dark)" }}>
+              <h3 className={styles.sidebarTitle}>
                 Artikel Lainnya
               </h3>
               <div style={{ 
