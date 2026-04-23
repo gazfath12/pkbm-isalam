@@ -32,7 +32,7 @@ export default function AdminLogin() {
         </div>
 
         <h2 className={styles.loginTitle}>
-          Admin <span>ISALAM</span>
+          Admin <span>PUSDIKLAT I-SALAM</span>
         </h2>
         
         <form action={formAction} className={styles.loginForm}>

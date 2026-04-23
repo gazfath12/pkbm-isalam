@@ -2,7 +2,7 @@ import Link from "next/link";
 import styles from "./not-found.module.css";
 
 export const metadata = {
-  title: "404 — Halaman Tidak Ditemukan | I-SALAM",
+  title: "404 — Halaman Tidak Ditemukan | PUSDIKLAT I-SALAM",
   description: "Halaman yang Anda cari tidak dapat ditemukan.",
 };
 
