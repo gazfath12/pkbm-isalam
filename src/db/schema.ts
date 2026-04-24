@@ -22,3 +22,12 @@ export const materials = pgTable("materials", {
   category: text("category").notNull(), // Lembaga, Kegiatan, Program
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
+
+export const gallery = pgTable("gallery", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  imageUrl: text("image_url").notNull(),
+  caption: text("caption").notNull(),
+  category: text("category").notNull(), // students, staff, dinas
+  alt: text("alt"),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+});

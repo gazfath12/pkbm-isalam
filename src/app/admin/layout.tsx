@@ -35,6 +35,7 @@ export default async function AdminLayout({ children }: { children: ReactNode })
         <nav className={styles.navLinks}>
           <a href="/admin/dashboard" className={styles.navLink}>Artikel</a>
           <a href="/admin/dashboard/materials" className={styles.navLink}>Materi Promosi</a>
+          <a href="/admin/dashboard/gallery" className={styles.navLink}>Galeri Foto</a>
           <a href="/" target="_blank" className={styles.publicLink}>Lihat Website ↗</a>
           <form action={logoutAction}>
             <button type="submit" className={styles.logoutBtn}>

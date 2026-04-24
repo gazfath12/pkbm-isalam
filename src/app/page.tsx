@@ -14,14 +14,15 @@ import Registration from "@/components/Registration/Registration";
 import Contact from "@/components/Contact/Contact";
 import Footer from "@/components/Footer/Footer";
 import { getPublishedArticles } from "@/lib/actions/articles";
-import { getMaterials } from "@/lib/actions/materials";
+import { getPhotos } from "@/lib/actions/gallery";
 
 export const dynamic = "force-dynamic";
 
 export default async function Home() {
-  const [dbArticles, dbMaterials] = await Promise.all([
+  const [dbArticles, dbMaterials, dbPhotos] = await Promise.all([
     getPublishedArticles(),
-    getMaterials()
+    getMaterials(),
+    getPhotos()
   ]);
 
   const colors = [
@@ -54,7 +55,7 @@ export default async function Home() {
       <Team />
       <Testimonials />
       <Multimedia />
-      <Gallery />
+      <Gallery photos={dbPhotos} />
       <Events />
       <Downloads materials={dbMaterials} />
       {mappedArticles.length > 0 && <Articles articles={mappedArticles} />}

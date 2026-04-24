@@ -16,16 +16,38 @@ const categories = [
   { id: "dinas", label: "Kegiatan Dinas" },
 ];
 
-export default function Gallery() {
+interface Photo {
+  imageUrl: string;
+  caption: string;
+  category: string;
+  alt?: string | null;
+  catId?: string; // used for filtering internally
+}
+
+export default function Gallery({ photos = [] }: { photos?: Photo[] }) {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [activeFilter, setActiveFilter] = useState("all");
 
-  const allImages = [
-    ...ACTIVITIES.students.map(img => ({ ...img, catId: "students" })),
-    ...ACTIVITIES.staff.map(img => ({ ...img, catId: "staff" })),
-    ...ACTIVITIES.dinas.map(img => ({ ...img, catId: "dinas" })),
-  ];
+  const categoryMap: Record<string, string> = {
+    students: "Kegiatan Belajar",
+    staff: "Staf & Karyawan",
+    dinas: "Kegiatan Dinas",
+  };
+
+  const allImages = photos.length > 0 
+    ? photos.map(img => ({ 
+        src: img.imageUrl, 
+        alt: img.alt || img.caption, 
+        caption: img.caption, 
+        category: categoryMap[img.category] || img.category, 
+        catId: img.category 
+      }))
+    : [
+        ...ACTIVITIES.students.map(img => ({ ...img, catId: "students" })),
+        ...ACTIVITIES.staff.map(img => ({ ...img, catId: "staff" })),
+        ...ACTIVITIES.dinas.map(img => ({ ...img, catId: "dinas" })),
+      ];
 
   const filteredImages = activeFilter === "all" 
     ? allImages 
