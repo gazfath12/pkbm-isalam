@@ -3,10 +3,11 @@ import { checkAuth } from "@/lib/actions/auth";
 import { getPhotoById } from "@/lib/actions/gallery";
 import { notFound } from "next/navigation";
 
-export default async function EditPhotoPage({ params }: { params: { id: string } }) {
+export default async function EditPhotoPage({ params }: { params: Promise<{ id: string }> }) {
   await checkAuth();
   
-  const photo = await getPhotoById(params.id);
+  const { id } = await params;
+  const photo = await getPhotoById(id);
   
   if (!photo) {
     notFound();

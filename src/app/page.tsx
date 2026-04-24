@@ -14,6 +14,7 @@ import Registration from "@/components/Registration/Registration";
 import Contact from "@/components/Contact/Contact";
 import Footer from "@/components/Footer/Footer";
 import { getPublishedArticles } from "@/lib/actions/articles";
+import { getMaterials } from "@/lib/actions/materials";
 import { getPhotos } from "@/lib/actions/gallery";
 
 export const dynamic = "force-dynamic";
