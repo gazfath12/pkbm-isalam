@@ -74,7 +74,7 @@ export const metadata: Metadata = {
     creator: "@pkbm_isalam",
   },
   verification: {
-    google: "google-site-verification-placeholder",
+    google: "83999e39988338a6",
   },
   category: "education",
 };
