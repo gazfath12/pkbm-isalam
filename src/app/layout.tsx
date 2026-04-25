@@ -8,13 +8,47 @@ export const viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://isalam.sch.id"), // Update dengan domain asli
-  title: "PKBM & LKP I-SALAM — Pendidikan Kesetaraan & Pelatihan Vokasional",
+  metadataBase: new URL("https://isalam.sch.id"),
+  title: {
+    default: "PKBM & LKP I-SALAM — Pendidikan Kesetaraan & Pelatihan Vokasional",
+    template: "%s | PKBM & LKP I-SALAM",
+  },
   description:
-    "PKBM & LKP I-SALAM hadir di Colomadu, Karanganyar. Layanan Kejar Paket A/B/C terakreditasi B, kursus komputer, desain grafis, tata boga, hantaran, dan bimbel SD & SMP berbasis nilai keislaman.",
-  keywords: "PKBM I-SALAM, LKP I-SALAM, Bimbel I-SALAM, Kejar Paket A, Kejar Paket B, Kejar Paket C, Kursus Komputer, Desain Grafis, Tata Boga, Hantaran, Bimbel SD SMP, Colomadu, Karanganyar, Jawa Tengah",
-  authors: [{ name: "PKBM & LKP I-SALAM" }],
-  robots: "index, follow",
+    "PKBM & LKP I-SALAM di Colomadu, Karanganyar. Layanan Kejar Paket A/B/C terakreditasi B, kursus komputer, desain grafis, tata boga, dan bimbel SD & SMP berbasis nilai keislaman.",
+  keywords: [
+    "PKBM I-SALAM",
+    "LKP I-SALAM",
+    "Pusdiklat ISALAM",
+    "Kejar Paket A Colomadu",
+    "Kejar Paket B Karanganyar",
+    "Kejar Paket C Jawa Tengah",
+    "Kursus Komputer Karanganyar",
+    "Bimbel SD SMP Colomadu",
+    "Pendidikan Kesetaraan",
+    "Vokasi Karanganyar"
+  ],
+  authors: [{ name: "PKBM & LKP I-SALAM", url: "https://isalam.sch.id" }],
+  creator: "PKBM & LKP I-SALAM",
+  publisher: "PKBM & LKP I-SALAM",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
   openGraph: {
     title: "PKBM & LKP I-SALAM — Pendidikan Kesetaraan & Pelatihan Vokasional",
     description:
@@ -24,8 +58,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: "/assets/logo_transparent.png",
-        width: 800,
-        height: 600,
+        width: 1200,
+        height: 630,
         alt: "Logo PKBM & LKP I-SALAM",
       },
     ],
@@ -37,7 +71,12 @@ export const metadata: Metadata = {
     title: "PKBM & LKP I-SALAM",
     description: "Lembaga pendidikan kesetaraan, kursus vokasional, dan bimbel di Karanganyar, Jawa Tengah.",
     images: ["/assets/logo_transparent.png"],
+    creator: "@pkbm_isalam",
   },
+  verification: {
+    google: "google-site-verification-placeholder",
+  },
+  category: "education",
 };
 
 export default function RootLayout({

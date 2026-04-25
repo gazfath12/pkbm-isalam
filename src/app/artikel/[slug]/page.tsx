@@ -19,10 +19,32 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return { title: "Artikel Tidak Ditemukan" };
   }
 
+  const url = `https://isalam.sch.id/artikel/${slug}`;
+
   return {
-    title: `${article.title} - Pusdiklat ISALAM`,
+    title: article.title,
     description: article.excerpt,
+    alternates: {
+      canonical: `/artikel/${slug}`,
+    },
     openGraph: {
+      title: article.title,
+      description: article.excerpt,
+      url: url,
+      type: "article",
+      publishedTime: article.createdAt.toISOString(),
+      modifiedTime: (article.updatedAt || article.createdAt).toISOString(),
+      images: article.imageUrl ? [
+        {
+          url: article.imageUrl,
+          width: 1200,
+          height: 630,
+          alt: article.title,
+        }
+      ] : [],
+    },
+    twitter: {
+      card: "summary_large_image",
       title: article.title,
       description: article.excerpt,
       images: article.imageUrl ? [article.imageUrl] : [],

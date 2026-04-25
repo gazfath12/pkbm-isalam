@@ -6,8 +6,17 @@ import { FiCalendar, FiArrowRight } from "react-icons/fi";
 import styles from "./artikel.module.css";
 
 export const metadata = {
-  title: "Artikel & Kabar Terkini - Pusdiklat ISALAM",
-  description: "Berita, kegiatan, pelatihan, dan informasi terbaru seputar PKBM Inisiator Salam Kariim & LKP ISALAM.",
+  title: "Artikel & Kabar Terkini",
+  description: "Berita, kegiatan, pelatihan, dan informasi terbaru seputar PKBM & LKP I-SALAM Colomadu, Karanganyar.",
+  alternates: {
+    canonical: "/artikel",
+  },
+  openGraph: {
+    title: "Artikel & Kabar Terkini | PKBM & LKP I-SALAM",
+    description: "Berita, kegiatan, pelatihan, dan informasi terbaru seputar PKBM & LKP I-SALAM.",
+    url: "https://isalam.sch.id/artikel",
+    type: "website",
+  },
 };
 
 export const dynamic = "force-dynamic";
