@@ -10,7 +10,7 @@ const stats = [
   {
     id: "stat-siswa",
     icon: FiUsers,
-    value: 512,
+    value: 205,
     suffix: "+",
     label: "Siswa Aktif",
     description: "Warga belajar yang sedang aktif mengikuti program kami",
@@ -19,7 +19,7 @@ const stats = [
   {
     id: "stat-pengajar",
     icon: FiBookOpen,
-    value: 42,
+    value: 20,
     suffix: "+",
     label: "Tenaga Pengajar",
     description: "Pendidik dan instruktur berpengalaman bersertifikat",
@@ -28,7 +28,7 @@ const stats = [
   {
     id: "stat-lulusan",
     icon: FiAward,
-    value: 1200,
+    value: 48,
     suffix: "+",
     label: "Alumni Lulusan",
     description: "Warga belajar yang telah berhasil menyelesaikan program",
@@ -37,7 +37,7 @@ const stats = [
   {
     id: "stat-tahun",
     icon: FiTrendingUp,
-    value: 10,
+    value: 5,
     suffix: "+",
     label: "Tahun Pengalaman",
     description: "Melayani masyarakat dengan penuh dedikasi",

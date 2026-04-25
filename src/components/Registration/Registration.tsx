@@ -147,16 +147,16 @@ export default function Registration() {
 
               <div className={styles.statsContainer}>
                 <div className={styles.stat}>
-                  <span className={styles.statNumber}>500+</span>
+                  <span className={styles.statNumber}>205+</span>
+                  <span className={styles.statLabel}>Siswa</span>
+                </div>
+                <div className={styles.stat}>
+                  <span className={styles.statNumber}>5+</span>
+                  <span className={styles.statLabel}>Tahun</span>
+                </div>
+                <div className={styles.stat}>
+                  <span className={styles.statNumber}>48+</span>
                   <span className={styles.statLabel}>Alumni</span>
-                </div>
-                <div className={styles.stat}>
-                  <span className={styles.statNumber}>2</span>
-                  <span className={styles.statLabel}>Program</span>
-                </div>
-                <div className={styles.stat}>
-                  <span className={styles.statNumber}>98%</span>
-                  <span className={styles.statLabel}>Kelulusan</span>
                 </div>
               </div>
 

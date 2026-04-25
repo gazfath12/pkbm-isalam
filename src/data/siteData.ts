@@ -17,13 +17,13 @@ export const SITE = {
 // ===== LEGAL INFO =====
 export const LEGAL = {
   pkbm: {
-    npsn: "P9900108", // Update dengan data asli
+    npsn: "P9998861",
     iziOperasional: "421.9/2856/2021",
     akreditasi: "BAN-PDM",
     tahunBerdiri: "2021",
   },
   lkp: {
-    npsn: "K0609001", // Update dengan data asli
+    npsn: "K9998234",
     iziOperasional: "421.9/2857/2023",
     tahunBerdiri: "2023",
   },
@@ -60,7 +60,7 @@ export const PROGRAMS = [
   {
     id: "lkp",
     tag: "LKP",
-    name: "LKP I-SALAM",
+    name: "LKP Inisiator Salam Kariim",
     fullName: "Lembaga Kursus dan Pelatihan",
     subtitle: "Vokasi & Keterampilan Profesional",
     description:
@@ -116,10 +116,10 @@ export const REGISTRATION_PROGRAMS = [
   "PKBM Inisiator Salam Kariim – Paket A (Setara SD)",
   "PKBM Inisiator Salam Kariim – Paket B (Setara SMP)",
   "PKBM Inisiator Salam Kariim – Paket C (Setara SMA)",
-  "LKP I-SALAM – Komputer Office",
-  "LKP I-SALAM – Desain Grafis",
-  "LKP I-SALAM – Tata Boga",
-  "LKP I-SALAM – Hantaran",
+  "LKP Inisiator Salam Kariim – Komputer Office",
+  "LKP Inisiator Salam Kariim – Desain Grafis",
+  "LKP Inisiator Salam Kariim – Tata Boga",
+  "LKP Inisiator Salam Kariim – Hantaran",
   "Bimbel I-SALAM – SD",
   "Bimbel I-SALAM – SMP",
 ];
@@ -159,10 +159,10 @@ export const PROFILE = {
 
 // ===== STATISTIK =====
 export const STATS = [
-  { value: "500+", label: "Warga Belajar", suffix: "" },
-  { value: "3+", label: "Tahun Berdiri", suffix: "" },
-  { value: "98%", label: "Tingkat Kelulusan", suffix: "" },
-  { value: "3", label: "Layanan Utama", suffix: "" },
+  { value: "205+", label: "Warga Belajar", suffix: "" },
+  { value: "5+", label: "Tahun Berdiri", suffix: "" },
+  { value: "20+", label: "Tenaga Pengajar", suffix: "" },
+  { value: "48+", label: "Alumni Lulus", suffix: "" },
 ];
 
 // ===== PROFIL TIM =====
@@ -427,7 +427,7 @@ export const CONTACT = {
   address: "Colomadu, Karanganyar, Jawa Tengah",
   addressFull: "Dusun/Desa Colomadu, Kec. Colomadu, Kab. Karanganyar, Jawa Tengah 57175",
   whatsapp: WA_NUMBER,
-  email: "isalam.pkbmlkp@gmail.com",
+  email: "pusdiklatisalamsolo@gmail.com",
   operationalHours: "Senin – Sabtu, 08.00 – 16.00 WIB",
   mapsUrl: "https://maps.google.com/?q=Colomadu,Karanganyar",
 };

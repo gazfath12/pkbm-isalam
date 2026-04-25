@@ -125,7 +125,8 @@ export default function Footer() {
                 {[
                   { label: "Terdaftar Kemendikbud", icon: "🏛️" },
                   { label: "Akreditasi B", icon: "🎖️" },
-                  { label: "NPSN Resmi", icon: "📋" },
+                  { label: `NPSN LKP: ${LEGAL.lkp.npsn}`, icon: "📋" },
+                  { label: `NPSN PKBM: ${LEGAL.pkbm.npsn}`, icon: "📋" },
                   { label: "Ijin Operasional Aktif", icon: "✅" },
                 ].map((b) => (
                   <div key={b.label} className={styles.legalBadge}>
