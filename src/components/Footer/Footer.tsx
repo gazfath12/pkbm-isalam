@@ -4,7 +4,7 @@ import Image from "next/image";
 import styles from "./Footer.module.css";
 import { FiHeart, FiInstagram, FiFacebook, FiMapPin } from "react-icons/fi";
 import { FaWhatsapp } from "react-icons/fa";
-import { SITE, CONTACT, PROGRAMS } from "@/data/siteData";
+import { SITE, CONTACT, PROGRAMS, LEGAL } from "@/data/siteData";
 
 const navLinks = [
   { href: "#beranda", label: "Beranda" },
