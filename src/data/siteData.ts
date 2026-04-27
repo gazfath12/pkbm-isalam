@@ -404,19 +404,19 @@ export const EVENTS = [
 export const ACTIVITIES = {
   students: [11, 3, 1, 12, 18, 15, 4, 14, 5, 20].map((num, i) => ({
     src: `/assets/activities/kegiatan-${num}.jpg`,
-    alt: `Kegiatan Warga Belajar I-SALAM ${num}`,
+    alt: `Kegiatan Belajar PKBM I-SALAM Colomadu Solo - Kejar Paket A/B/C (${num})`,
     caption: `Kegiatan PKBM (${i + 1})`,
     category: "Kegiatan Belajar",
   })),
   staff: [16, 17, 18, 19, 20, 21, 22].map((num) => ({
     src: `/assets/activities/kegiatan-${num}.jpg`,
-    alt: `Kegiatan Guru & Staf I-SALAM ${num}`,
+    alt: `Guru dan Staf Pusdiklat I-SALAM Karanganyar (${num})`,
     caption: `Kegiatan Lembaga (${num})`,
     category: "Staf & Karyawan",
   })),
   dinas: [1, 2, 3].map((num) => ({
     src: `/assets/activities/dinas-${num}.jpg`,
-    alt: `Kegiatan Dinas & Pameran ${num}`,
+    alt: `Kunjungan Dinas ke PKBM I-SALAM Solo Raya (${num})`,
     caption: `Kegiatan Dinas (${num})`,
     category: "Kegiatan Dinas",
   })),
