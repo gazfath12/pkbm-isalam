@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next';
 import { getPublishedArticles } from '@/lib/actions/articles';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = 'https://isalam.sch.id';
+  const baseUrl = 'https://www.pusdiklatisalam.web.id';
 
   let articleEntries: MetadataRoute.Sitemap = [];
   

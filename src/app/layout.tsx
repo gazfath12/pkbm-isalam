@@ -8,7 +8,7 @@ export const viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://isalam.sch.id"),
+  metadataBase: new URL("https://www.pusdiklatisalam.web.id"),
   title: {
     default: "PKBM & LKP I-SALAM — Pendidikan Kesetaraan & Pelatihan Vokasional",
     template: "%s | PKBM & LKP I-SALAM",
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     "Pendidikan Kesetaraan",
     "Vokasi Karanganyar"
   ],
-  authors: [{ name: "PKBM & LKP I-SALAM", url: "https://isalam.sch.id" }],
+  authors: [{ name: "PKBM & LKP I-SALAM", url: "https://www.pusdiklatisalam.web.id" }],
   creator: "PKBM & LKP I-SALAM",
   publisher: "PKBM & LKP I-SALAM",
   formatDetection: {
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     title: "PKBM & LKP I-SALAM — Pendidikan Kesetaraan & Pelatihan Vokasional",
     description:
       "Pusat pengembangan SDM unggul di Colomadu, Karanganyar. PKBM Akreditasi B, LKP Vokasi, dan Bimbel SD & SMP berbasis nilai Islam.",
-    url: "https://isalam.sch.id",
+    url: "https://www.pusdiklatisalam.web.id",
     siteName: "PKBM & LKP I-SALAM",
     images: [
       {

@@ -14,6 +14,6 @@ export default function robots(): MetadataRoute.Robots {
         ],
       },
     ],
-    sitemap: 'https://isalam.sch.id/sitemap.xml',
+    sitemap: 'https://www.pusdiklatisalam.web.id/sitemap.xml',
   };
 }

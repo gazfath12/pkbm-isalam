@@ -46,7 +46,14 @@ export default function Hero() {
             key={act.src}
             className={`${styles.bgSlide} ${i === activeSlide ? styles.bgSlideActive : ""}`}
           >
-            <Image src={act.src} alt={act.alt} fill className={styles.bgImg} priority={i === 0} />
+            <Image 
+              src={act.src} 
+              alt={act.alt} 
+              fill 
+              className={styles.bgImg} 
+              priority={i === 0} 
+              sizes="100vw"
+            />
           </div>
         ))}
         <div className={styles.bgOverlay} />
@@ -157,7 +164,13 @@ export default function Hero() {
                   transition={{ duration: 0.5 }}
                   style={{ position: "absolute", inset: 0 }}
                 >
-                  <Image src={act.src} alt={act.alt} fill className={styles.photoImg} />
+                  <Image 
+                    src={act.src} 
+                    alt={act.alt} 
+                    fill 
+                    className={styles.photoImg} 
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
                 </motion.div>
               ))}
               <div className={styles.photoCaption}>

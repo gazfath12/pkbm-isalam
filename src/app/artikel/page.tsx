@@ -14,7 +14,7 @@ export const metadata = {
   openGraph: {
     title: "Artikel & Kabar Terkini | PKBM & LKP I-SALAM",
     description: "Berita, kegiatan, pelatihan, dan informasi terbaru seputar PKBM & LKP I-SALAM.",
-    url: "https://isalam.sch.id/artikel",
+    url: "https://www.pusdiklatisalam.web.id/artikel",
     type: "website",
   },
 };

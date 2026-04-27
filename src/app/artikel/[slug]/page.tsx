@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return { title: "Artikel Tidak Ditemukan" };
   }
 
-  const url = `https://isalam.sch.id/artikel/${slug}`;
+  const url = `https://www.pusdiklatisalam.web.id/artikel/${slug}`;
 
   return {
     title: article.title,
